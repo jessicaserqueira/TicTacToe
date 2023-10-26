@@ -9,6 +9,7 @@ import UIKit
 
 class HomeScreenViewController: UIViewController {
     var viewModel: HomeScreenViewModel
+    var customView = HomeScreenView()
     
     init(viewModel: HomeScreenViewModel) {
         self.viewModel = viewModel
@@ -21,7 +22,8 @@ class HomeScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = DesignSystem.Colors.secondary
+        view = customView
+        view.backgroundColor = DesignSystem.Colors.background
     }
     
     func showBoardScreen(){
