@@ -10,6 +10,10 @@
 		A4CC800A2AEA915300BD6F6E /* DS.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC80092AEA915300BD6F6E /* DS.swift */; };
 		A4CC800C2AEA916400BD6F6E /* DS+Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC800B2AEA916300BD6F6E /* DS+Colors.swift */; };
 		A4CC800E2AEA91A100BD6F6E /* UIColor+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC800D2AEA91A100BD6F6E /* UIColor+ext.swift */; };
+		A4CC80122AEA989B00BD6F6E /* SF-Pro-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A4CC800F2AEA989B00BD6F6E /* SF-Pro-Text-Bold.otf */; };
+		A4CC80132AEA989B00BD6F6E /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = A4CC80102AEA989B00BD6F6E /* SF-Pro-Text-Medium.otf */; };
+		A4CC80142AEA989B00BD6F6E /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = A4CC80112AEA989B00BD6F6E /* SF-Pro-Text-Regular.otf */; };
+		A4CC80162AEA993B00BD6F6E /* UIFont+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC80152AEA993B00BD6F6E /* UIFont+ext.swift */; };
 		A4EFB0552AE9C83100F03ACC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EFB0542AE9C83100F03ACC /* AppDelegate.swift */; };
 		A4EFB0572AE9C83100F03ACC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EFB0562AE9C83100F03ACC /* SceneDelegate.swift */; };
 		A4EFB0592AE9C83100F03ACC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EFB0582AE9C83100F03ACC /* ViewController.swift */; };
@@ -44,6 +48,10 @@
 		A4CC80092AEA915300BD6F6E /* DS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DS.swift; sourceTree = "<group>"; };
 		A4CC800B2AEA916300BD6F6E /* DS+Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DS+Colors.swift"; sourceTree = "<group>"; };
 		A4CC800D2AEA91A100BD6F6E /* UIColor+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+ext.swift"; sourceTree = "<group>"; };
+		A4CC800F2AEA989B00BD6F6E /* SF-Pro-Text-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Bold.otf"; sourceTree = "<group>"; };
+		A4CC80102AEA989B00BD6F6E /* SF-Pro-Text-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Medium.otf"; sourceTree = "<group>"; };
+		A4CC80112AEA989B00BD6F6E /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
+		A4CC80152AEA993B00BD6F6E /* UIFont+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+ext.swift"; sourceTree = "<group>"; };
 		A4EFB0512AE9C83100F03ACC /* TicTacToe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicTacToe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4EFB0542AE9C83100F03ACC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4EFB0562AE9C83100F03ACC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -177,6 +185,9 @@
 		A4FA52E92AEA8EB1000E09D0 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				A4CC800F2AEA989B00BD6F6E /* SF-Pro-Text-Bold.otf */,
+				A4CC80102AEA989B00BD6F6E /* SF-Pro-Text-Medium.otf */,
+				A4CC80112AEA989B00BD6F6E /* SF-Pro-Text-Regular.otf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -185,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				A4CC800D2AEA91A100BD6F6E /* UIColor+ext.swift */,
+				A4CC80152AEA993B00BD6F6E /* UIFont+ext.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -310,8 +322,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4CC80132AEA989B00BD6F6E /* SF-Pro-Text-Medium.otf in Resources */,
+				A4CC80142AEA989B00BD6F6E /* SF-Pro-Text-Regular.otf in Resources */,
 				A4EFB0612AE9C83300F03ACC /* LaunchScreen.storyboard in Resources */,
 				A4EFB05E2AE9C83300F03ACC /* Assets.xcassets in Resources */,
+				A4CC80122AEA989B00BD6F6E /* SF-Pro-Text-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,6 +357,7 @@
 				A4EFB0592AE9C83100F03ACC /* ViewController.swift in Sources */,
 				A4FA52F02AEA8F32000E09D0 /* AppCoordinator.swift in Sources */,
 				A4EFB0552AE9C83100F03ACC /* AppDelegate.swift in Sources */,
+				A4CC80162AEA993B00BD6F6E /* UIFont+ext.swift in Sources */,
 				A4CC800A2AEA915300BD6F6E /* DS.swift in Sources */,
 				A4CC800C2AEA916400BD6F6E /* DS+Colors.swift in Sources */,
 				A4EFB0572AE9C83100F03ACC /* SceneDelegate.swift in Sources */,
