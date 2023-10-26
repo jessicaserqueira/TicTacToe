@@ -16,7 +16,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        coordinator = AppCoordinator(window: window!)
-        coordinator?.start()
+        if let window = window {
+            let coordinator = AppCoordinator(window: window)
+            coordinator.start()
+        }
     }
 }

@@ -16,7 +16,14 @@ class HomeScreenCoordinator: Coordinator {
     }
     
     func start() {
-        let viewController = HomeScreenViewController()
+        let viewModel = HomeScreenViewModel(coordinator: self)
+        let viewController = HomeScreenViewController(viewModel: viewModel)
         navigationController.pushViewController(viewController, animated: true)
+    }
+}
+
+extension HomeScreenCoordinator: HomeScreenCoordinating {
+    func showBoardScreen() {
+        
     }
 }
