@@ -15,6 +15,9 @@
 		A4EFB06C2AE9C83300F03ACC /* TicTacToeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EFB06B2AE9C83300F03ACC /* TicTacToeTests.swift */; };
 		A4EFB0762AE9C83400F03ACC /* TicTacToeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EFB0752AE9C83400F03ACC /* TicTacToeUITests.swift */; };
 		A4EFB0782AE9C83400F03ACC /* TicTacToeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EFB0772AE9C83400F03ACC /* TicTacToeUITestsLaunchTests.swift */; };
+		A4FA52EE2AEA8EFA000E09D0 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FA52ED2AEA8EFA000E09D0 /* Coordinator.swift */; };
+		A4FA52F02AEA8F32000E09D0 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FA52EF2AEA8F32000E09D0 /* AppCoordinator.swift */; };
+		A4FA52F22AEA8F9D000E09D0 /* ViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FA52F12AEA8F9D000E09D0 /* ViewCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		A4EFB0712AE9C83400F03ACC /* TicTacToeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TicTacToeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4EFB0752AE9C83400F03ACC /* TicTacToeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeUITests.swift; sourceTree = "<group>"; };
 		A4EFB0772AE9C83400F03ACC /* TicTacToeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A4FA52ED2AEA8EFA000E09D0 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		A4FA52EF2AEA8F32000E09D0 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		A4FA52F12AEA8F9D000E09D0 /* ViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				A4EFB0532AE9C83100F03ACC /* TicTacToe */,
+				A4EFB0622AE9C83300F03ACC /* Info.plist */,
 				A4EFB06A2AE9C83300F03ACC /* TicTacToeTests */,
 				A4EFB0742AE9C83400F03ACC /* TicTacToeUITests */,
 				A4EFB0522AE9C83100F03ACC /* Products */,
@@ -97,12 +104,13 @@
 		A4EFB0532AE9C83100F03ACC /* TicTacToe */ = {
 			isa = PBXGroup;
 			children = (
-				A4EFB0542AE9C83100F03ACC /* AppDelegate.swift */,
-				A4EFB0562AE9C83100F03ACC /* SceneDelegate.swift */,
-				A4EFB0582AE9C83100F03ACC /* ViewController.swift */,
-				A4EFB05D2AE9C83300F03ACC /* Assets.xcassets */,
-				A4EFB05F2AE9C83300F03ACC /* LaunchScreen.storyboard */,
-				A4EFB0622AE9C83300F03ACC /* Info.plist */,
+				A4FA52EB2AEA8EBF000E09D0 /* DesignSystem */,
+				A4FA52EA2AEA8EB7000E09D0 /* Utils */,
+				A4FA52E92AEA8EB1000E09D0 /* Fonts */,
+				A4FA52E82AEA8E98000E09D0 /* Components */,
+				A4FA52E52AEA8E61000E09D0 /* Features */,
+				A4FA52E72AEA8E7D000E09D0 /* Resources */,
+				A4FA52E62AEA8E6C000E09D0 /* App */,
 			);
 			path = TicTacToe;
 			sourceTree = "<group>";
@@ -122,6 +130,71 @@
 				A4EFB0772AE9C83400F03ACC /* TicTacToeUITestsLaunchTests.swift */,
 			);
 			path = TicTacToeUITests;
+			sourceTree = "<group>";
+		};
+		A4FA52E52AEA8E61000E09D0 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				A4FA52EC2AEA8EDB000E09D0 /* Protocols */,
+				A4EFB0582AE9C83100F03ACC /* ViewController.swift */,
+				A4FA52EF2AEA8F32000E09D0 /* AppCoordinator.swift */,
+				A4FA52F12AEA8F9D000E09D0 /* ViewCoordinator.swift */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		A4FA52E62AEA8E6C000E09D0 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A4EFB0542AE9C83100F03ACC /* AppDelegate.swift */,
+				A4EFB0562AE9C83100F03ACC /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		A4FA52E72AEA8E7D000E09D0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A4EFB05D2AE9C83300F03ACC /* Assets.xcassets */,
+				A4EFB05F2AE9C83300F03ACC /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A4FA52E82AEA8E98000E09D0 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		A4FA52E92AEA8EB1000E09D0 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		A4FA52EA2AEA8EB7000E09D0 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		A4FA52EB2AEA8EBF000E09D0 /* DesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DesignSystem;
+			sourceTree = "<group>";
+		};
+		A4FA52EC2AEA8EDB000E09D0 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				A4FA52ED2AEA8EFA000E09D0 /* Coordinator.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,7 +327,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4FA52EE2AEA8EFA000E09D0 /* Coordinator.swift in Sources */,
+				A4FA52F22AEA8F9D000E09D0 /* ViewCoordinator.swift in Sources */,
 				A4EFB0592AE9C83100F03ACC /* ViewController.swift in Sources */,
+				A4FA52F02AEA8F32000E09D0 /* AppCoordinator.swift in Sources */,
 				A4EFB0552AE9C83100F03ACC /* AppDelegate.swift in Sources */,
 				A4EFB0572AE9C83100F03ACC /* SceneDelegate.swift in Sources */,
 			);
