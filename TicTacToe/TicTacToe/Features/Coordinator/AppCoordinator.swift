@@ -22,7 +22,7 @@ class AppCoordinator: Coordinator {
     func start() {
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
-        let viewCoordinator = ViewCoordinator(navigationController: navigationController)
+        let viewCoordinator = HomeScreenCoordinator(navigationController: navigationController)
         coordinate(to: viewCoordinator)
     }
 }

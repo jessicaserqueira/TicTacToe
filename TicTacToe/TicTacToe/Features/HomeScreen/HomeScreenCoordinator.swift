@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewCoordinator: Coordinator {
+class HomeScreenCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     
@@ -16,7 +16,7 @@ class ViewCoordinator: Coordinator {
     }
     
     func start() {
-        let viewController = ViewController()
+        let viewController = HomeScreenViewController()
         navigationController.pushViewController(viewController, animated: true)
     }
 }

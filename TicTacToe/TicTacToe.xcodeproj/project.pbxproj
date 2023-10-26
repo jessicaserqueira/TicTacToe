@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A4190F892AEA9F8600416ABE /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4190F882AEA9F8600416ABE /* HomeScreenView.swift */; };
+		A4190F8B2AEA9F8F00416ABE /* HomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4190F8A2AEA9F8F00416ABE /* HomeScreenViewModel.swift */; };
+		A4190F8D2AEA9FCC00416ABE /* HistoricViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4190F8C2AEA9FCC00416ABE /* HistoricViewController.swift */; };
+		A4190F8F2AEA9FD600416ABE /* HistoricViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4190F8E2AEA9FD600416ABE /* HistoricViewModel.swift */; };
+		A4190F912AEA9FDF00416ABE /* HistoricView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4190F902AEA9FDF00416ABE /* HistoricView.swift */; };
+		A4190F932AEA9FEB00416ABE /* HistoricCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4190F922AEA9FEB00416ABE /* HistoricCoordinator.swift */; };
 		A4CC800A2AEA915300BD6F6E /* DS.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC80092AEA915300BD6F6E /* DS.swift */; };
 		A4CC800C2AEA916400BD6F6E /* DS+Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC800B2AEA916300BD6F6E /* DS+Colors.swift */; };
 		A4CC800E2AEA91A100BD6F6E /* UIColor+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC800D2AEA91A100BD6F6E /* UIColor+ext.swift */; };
@@ -16,7 +22,7 @@
 		A4CC80162AEA993B00BD6F6E /* UIFont+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC80152AEA993B00BD6F6E /* UIFont+ext.swift */; };
 		A4EFB0552AE9C83100F03ACC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EFB0542AE9C83100F03ACC /* AppDelegate.swift */; };
 		A4EFB0572AE9C83100F03ACC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EFB0562AE9C83100F03ACC /* SceneDelegate.swift */; };
-		A4EFB0592AE9C83100F03ACC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EFB0582AE9C83100F03ACC /* ViewController.swift */; };
+		A4EFB0592AE9C83100F03ACC /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EFB0582AE9C83100F03ACC /* HomeScreenViewController.swift */; };
 		A4EFB05E2AE9C83300F03ACC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4EFB05D2AE9C83300F03ACC /* Assets.xcassets */; };
 		A4EFB0612AE9C83300F03ACC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4EFB05F2AE9C83300F03ACC /* LaunchScreen.storyboard */; };
 		A4EFB06C2AE9C83300F03ACC /* TicTacToeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EFB06B2AE9C83300F03ACC /* TicTacToeTests.swift */; };
@@ -24,7 +30,7 @@
 		A4EFB0782AE9C83400F03ACC /* TicTacToeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EFB0772AE9C83400F03ACC /* TicTacToeUITestsLaunchTests.swift */; };
 		A4FA52EE2AEA8EFA000E09D0 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FA52ED2AEA8EFA000E09D0 /* Coordinator.swift */; };
 		A4FA52F02AEA8F32000E09D0 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FA52EF2AEA8F32000E09D0 /* AppCoordinator.swift */; };
-		A4FA52F22AEA8F9D000E09D0 /* ViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FA52F12AEA8F9D000E09D0 /* ViewCoordinator.swift */; };
+		A4FA52F22AEA8F9D000E09D0 /* HomeScreenCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FA52F12AEA8F9D000E09D0 /* HomeScreenCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +51,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A4190F882AEA9F8600416ABE /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
+		A4190F8A2AEA9F8F00416ABE /* HomeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModel.swift; sourceTree = "<group>"; };
+		A4190F8C2AEA9FCC00416ABE /* HistoricViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricViewController.swift; sourceTree = "<group>"; };
+		A4190F8E2AEA9FD600416ABE /* HistoricViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricViewModel.swift; sourceTree = "<group>"; };
+		A4190F902AEA9FDF00416ABE /* HistoricView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricView.swift; sourceTree = "<group>"; };
+		A4190F922AEA9FEB00416ABE /* HistoricCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricCoordinator.swift; sourceTree = "<group>"; };
 		A4CC80092AEA915300BD6F6E /* DS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DS.swift; sourceTree = "<group>"; };
 		A4CC800B2AEA916300BD6F6E /* DS+Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DS+Colors.swift"; sourceTree = "<group>"; };
 		A4CC800D2AEA91A100BD6F6E /* UIColor+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+ext.swift"; sourceTree = "<group>"; };
@@ -55,7 +67,7 @@
 		A4EFB0512AE9C83100F03ACC /* TicTacToe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicTacToe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4EFB0542AE9C83100F03ACC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4EFB0562AE9C83100F03ACC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A4EFB0582AE9C83100F03ACC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A4EFB0582AE9C83100F03ACC /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		A4EFB05D2AE9C83300F03ACC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A4EFB0602AE9C83300F03ACC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A4EFB0622AE9C83300F03ACC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -66,7 +78,7 @@
 		A4EFB0772AE9C83400F03ACC /* TicTacToeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A4FA52ED2AEA8EFA000E09D0 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		A4FA52EF2AEA8F32000E09D0 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		A4FA52F12AEA8F9D000E09D0 /* ViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCoordinator.swift; sourceTree = "<group>"; };
+		A4FA52F12AEA8F9D000E09D0 /* HomeScreenCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +106,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A4CC80172AEA9B0400BD6F6E /* Historic */ = {
+			isa = PBXGroup;
+			children = (
+				A4190F922AEA9FEB00416ABE /* HistoricCoordinator.swift */,
+				A4190F902AEA9FDF00416ABE /* HistoricView.swift */,
+				A4190F8C2AEA9FCC00416ABE /* HistoricViewController.swift */,
+				A4190F8E2AEA9FD600416ABE /* HistoricViewModel.swift */,
+			);
+			path = Historic;
+			sourceTree = "<group>";
+		};
+		A4CC80182AEA9B1A00BD6F6E /* HomeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				A4FA52F12AEA8F9D000E09D0 /* HomeScreenCoordinator.swift */,
+				A4190F882AEA9F8600416ABE /* HomeScreenView.swift */,
+				A4EFB0582AE9C83100F03ACC /* HomeScreenViewController.swift */,
+				A4190F8A2AEA9F8F00416ABE /* HomeScreenViewModel.swift */,
+			);
+			path = HomeScreen;
+			sourceTree = "<group>";
+		};
+		A4CC801A2AEA9EEB00BD6F6E /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				A4FA52EF2AEA8F32000E09D0 /* AppCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		A4EFB0482AE9C83100F03ACC = {
 			isa = PBXGroup;
 			children = (
@@ -150,9 +192,9 @@
 			isa = PBXGroup;
 			children = (
 				A4FA52EC2AEA8EDB000E09D0 /* Protocols */,
-				A4EFB0582AE9C83100F03ACC /* ViewController.swift */,
-				A4FA52EF2AEA8F32000E09D0 /* AppCoordinator.swift */,
-				A4FA52F12AEA8F9D000E09D0 /* ViewCoordinator.swift */,
+				A4CC80182AEA9B1A00BD6F6E /* HomeScreen */,
+				A4CC80172AEA9B0400BD6F6E /* Historic */,
+				A4CC801A2AEA9EEB00BD6F6E /* Coordinator */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -352,13 +394,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4FA52EE2AEA8EFA000E09D0 /* Coordinator.swift in Sources */,
-				A4FA52F22AEA8F9D000E09D0 /* ViewCoordinator.swift in Sources */,
+				A4190F8F2AEA9FD600416ABE /* HistoricViewModel.swift in Sources */,
+				A4190F8B2AEA9F8F00416ABE /* HomeScreenViewModel.swift in Sources */,
+				A4FA52F22AEA8F9D000E09D0 /* HomeScreenCoordinator.swift in Sources */,
 				A4CC800E2AEA91A100BD6F6E /* UIColor+ext.swift in Sources */,
-				A4EFB0592AE9C83100F03ACC /* ViewController.swift in Sources */,
+				A4EFB0592AE9C83100F03ACC /* HomeScreenViewController.swift in Sources */,
 				A4FA52F02AEA8F32000E09D0 /* AppCoordinator.swift in Sources */,
 				A4EFB0552AE9C83100F03ACC /* AppDelegate.swift in Sources */,
 				A4CC80162AEA993B00BD6F6E /* UIFont+ext.swift in Sources */,
+				A4190F892AEA9F8600416ABE /* HomeScreenView.swift in Sources */,
+				A4190F912AEA9FDF00416ABE /* HistoricView.swift in Sources */,
+				A4190F8D2AEA9FCC00416ABE /* HistoricViewController.swift in Sources */,
 				A4CC800A2AEA915300BD6F6E /* DS.swift in Sources */,
+				A4190F932AEA9FEB00416ABE /* HistoricCoordinator.swift in Sources */,
 				A4CC800C2AEA916400BD6F6E /* DS+Colors.swift in Sources */,
 				A4EFB0572AE9C83100F03ACC /* SceneDelegate.swift in Sources */,
 			);
