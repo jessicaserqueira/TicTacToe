@@ -50,6 +50,12 @@ class HomeScreenView: UIView {
         )
     }()
     
+    private lazy var ticTacToeBoard: CustomBoardStackView = {
+        return CustomBoardStackView(
+            dimension: 4,
+            accessibilityIdentifier:"HomeScreenView.ticTacToeBoard"
+        )
+    }()
     
     // MARK: - Initializer
     override init(frame: CGRect) {
@@ -71,6 +77,7 @@ extension HomeScreenView {
         addSubview(startMatchButton)
         addSubview(playerOneTextField)
         addSubview(playerTwoTextField)
+        addSubview(ticTacToeBoard)
     }
     
     private func setupConstraints() {
@@ -85,6 +92,9 @@ extension HomeScreenView {
             playerOneTextField.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 200),
             playerTwoTextField.centerXAnchor.constraint(equalTo: centerXAnchor),
             playerTwoTextField.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 250),
+            
+            ticTacToeBoard.centerXAnchor.constraint(equalTo: centerXAnchor),
+            ticTacToeBoard.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 300),
         ])
     }
 }
