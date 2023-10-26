@@ -14,7 +14,7 @@ enum FontName: String {
 }
 
 extension UIFont {
-    static func roboto(ofSize size: CGFloat, weight: FontName) -> UIFont {
+    static func sFProText(ofSize size: CGFloat, weight: FontName) -> UIFont {
         var fontWeight: UIFont.Weight
         
         switch weight {

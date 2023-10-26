@@ -23,6 +23,18 @@ class HomeScreenView: UIView {
         return button
     }()
     
+    private lazy var startMatchButton: CustomButton = {
+        return CustomButton(
+            title: "Começar Partida",
+            textColor: .white,
+            backgroundColor: DesignSystem.Colors.tertiary,
+            cornerRadius: 14,
+            font: UIFont.sFProText(ofSize: 17, weight: .bold),
+            accessibilityIdentifier: "HomeScreenView.startMatch"
+        )
+        
+    }()
+    
     // MARK: - Initializer
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,12 +52,16 @@ class HomeScreenView: UIView {
 extension HomeScreenView {
     private func configureSubviews() {
         addSubview(segmentedButton)
+        addSubview(startMatchButton)
     }
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             segmentedButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             segmentedButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 100),
+            
+            startMatchButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            startMatchButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 150),
         ])
     }
 }
