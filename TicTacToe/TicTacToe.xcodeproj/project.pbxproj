@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A4CC800A2AEA915300BD6F6E /* DS.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC80092AEA915300BD6F6E /* DS.swift */; };
+		A4CC800C2AEA916400BD6F6E /* DS+Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC800B2AEA916300BD6F6E /* DS+Colors.swift */; };
+		A4CC800E2AEA91A100BD6F6E /* UIColor+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC800D2AEA91A100BD6F6E /* UIColor+ext.swift */; };
 		A4EFB0552AE9C83100F03ACC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EFB0542AE9C83100F03ACC /* AppDelegate.swift */; };
 		A4EFB0572AE9C83100F03ACC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EFB0562AE9C83100F03ACC /* SceneDelegate.swift */; };
 		A4EFB0592AE9C83100F03ACC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EFB0582AE9C83100F03ACC /* ViewController.swift */; };
@@ -38,6 +41,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A4CC80092AEA915300BD6F6E /* DS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DS.swift; sourceTree = "<group>"; };
+		A4CC800B2AEA916300BD6F6E /* DS+Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DS+Colors.swift"; sourceTree = "<group>"; };
+		A4CC800D2AEA91A100BD6F6E /* UIColor+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+ext.swift"; sourceTree = "<group>"; };
 		A4EFB0512AE9C83100F03ACC /* TicTacToe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicTacToe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4EFB0542AE9C83100F03ACC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4EFB0562AE9C83100F03ACC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,7 +90,6 @@
 			isa = PBXGroup;
 			children = (
 				A4EFB0532AE9C83100F03ACC /* TicTacToe */,
-				A4EFB0622AE9C83300F03ACC /* Info.plist */,
 				A4EFB06A2AE9C83300F03ACC /* TicTacToeTests */,
 				A4EFB0742AE9C83400F03ACC /* TicTacToeUITests */,
 				A4EFB0522AE9C83100F03ACC /* Products */,
@@ -104,6 +109,7 @@
 		A4EFB0532AE9C83100F03ACC /* TicTacToe */ = {
 			isa = PBXGroup;
 			children = (
+				A4EFB0622AE9C83300F03ACC /* Info.plist */,
 				A4FA52EB2AEA8EBF000E09D0 /* DesignSystem */,
 				A4FA52EA2AEA8EB7000E09D0 /* Utils */,
 				A4FA52E92AEA8EB1000E09D0 /* Fonts */,
@@ -178,6 +184,7 @@
 		A4FA52EA2AEA8EB7000E09D0 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				A4CC800D2AEA91A100BD6F6E /* UIColor+ext.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -185,6 +192,8 @@
 		A4FA52EB2AEA8EBF000E09D0 /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
+				A4CC800B2AEA916300BD6F6E /* DS+Colors.swift */,
+				A4CC80092AEA915300BD6F6E /* DS.swift */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -329,9 +338,12 @@
 			files = (
 				A4FA52EE2AEA8EFA000E09D0 /* Coordinator.swift in Sources */,
 				A4FA52F22AEA8F9D000E09D0 /* ViewCoordinator.swift in Sources */,
+				A4CC800E2AEA91A100BD6F6E /* UIColor+ext.swift in Sources */,
 				A4EFB0592AE9C83100F03ACC /* ViewController.swift in Sources */,
 				A4FA52F02AEA8F32000E09D0 /* AppCoordinator.swift in Sources */,
 				A4EFB0552AE9C83100F03ACC /* AppDelegate.swift in Sources */,
+				A4CC800A2AEA915300BD6F6E /* DS.swift in Sources */,
+				A4CC800C2AEA916400BD6F6E /* DS+Colors.swift in Sources */,
 				A4EFB0572AE9C83100F03ACC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
