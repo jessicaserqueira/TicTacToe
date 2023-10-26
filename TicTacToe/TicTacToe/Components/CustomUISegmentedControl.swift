@@ -12,12 +12,14 @@ protocol CustomSegmentedControlDelegate: AnyObject {
 }
 
 class CustomUISegmentedControl: UISegmentedControl {
-    
     weak var delegate: CustomSegmentedControlDelegate?
     
-    init(segmentTitles: [String], selectedSegmentIndex: Int, accessibilityIdentifier: String) {
+    init(
+        segmentTitles: [String],
+        selectedSegmentIndex: Int,
+        accessibilityIdentifier: String
+    ) {
         super.init(items: segmentTitles)
-
         self.selectedSegmentIndex = selectedSegmentIndex
         self.translatesAutoresizingMaskIntoConstraints = false
         self.accessibilityIdentifier = accessibilityIdentifier

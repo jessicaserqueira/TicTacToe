@@ -32,8 +32,24 @@ class HomeScreenView: UIView {
             font: UIFont.sFProText(ofSize: 17, weight: .bold),
             accessibilityIdentifier: "HomeScreenView.startMatch"
         )
-        
     }()
+    
+    private lazy var playerOneTextField: CustomTextField = {
+        return CustomTextField(
+            placeholder: "Jogador 1",
+            type: "Jogador 1", 
+            accessibilityIdentifier: "HomeScreenView.playerOneTextField"
+        )
+    }()
+    
+    private lazy var playerTwoTextField: CustomTextField = {
+        return CustomTextField(
+            placeholder: "Jogador 2",
+            type: "Jogador 2",
+            accessibilityIdentifier: "HomeScreenView.playerTwoTextField"
+        )
+    }()
+    
     
     // MARK: - Initializer
     override init(frame: CGRect) {
@@ -53,6 +69,8 @@ extension HomeScreenView {
     private func configureSubviews() {
         addSubview(segmentedButton)
         addSubview(startMatchButton)
+        addSubview(playerOneTextField)
+        addSubview(playerTwoTextField)
     }
     
     private func setupConstraints() {
@@ -62,6 +80,11 @@ extension HomeScreenView {
             
             startMatchButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             startMatchButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 150),
+            
+            playerOneTextField.centerXAnchor.constraint(equalTo: centerXAnchor),
+            playerOneTextField.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 200),
+            playerTwoTextField.centerXAnchor.constraint(equalTo: centerXAnchor),
+            playerTwoTextField.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 250),
         ])
     }
 }
