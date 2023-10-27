@@ -10,8 +10,24 @@ import Foundation
 class BoardViewModel {
     var coordinator: BoardCoordinating?
     var boardSize: BoardDimensions?
-    
-    init(coordinator: BoardCoordinating) {
+    var playerOneName: String?
+    var playerTwoName: String?
+    var game: Game
+
+    init(coordinator: BoardCoordinating, game: Game) {
         self.coordinator = coordinator
+        self.game = game
+    }
+
+    func resetGame() {
+        game.reset()
+    }
+
+    func makeMove(at row: Int, column: Int) {
+
+    }
+
+    func currentPlayerName() -> String {
+        return game.currentPlayerName()
     }
 }

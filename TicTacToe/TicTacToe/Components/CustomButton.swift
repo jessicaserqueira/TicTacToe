@@ -21,9 +21,9 @@ class CustomButton: UIButton {
         super.init(frame: .zero)
         self.translatesAutoresizingMaskIntoConstraints = false
         self.accessibilityIdentifier = accessibilityIdentifier
-        
-        setTitle(title, for: .normal)
-        setTitleColor(textColor, for: .normal)
+        self.setTitle(title, for: .normal)
+        self.setTitleColor(textColor, for: .normal)
+        self.layer.cornerRadius = cornerRadius
         
         if let backgroundColor = backgroundColor {
             if let opacity = opacity {
@@ -32,14 +32,19 @@ class CustomButton: UIButton {
                 self.backgroundColor = backgroundColor
             }
         }
-        layer.cornerRadius = cornerRadius
-        
-        NSLayoutConstraint.activate([
-            heightAnchor.constraint(equalToConstant: 50)
-        ])
+        setupConstraints()   
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+}
+
+// MARK: - Methods
+extension CustomButton {
+    private func setupConstraints() {
+        NSLayoutConstraint.activate([
+            heightAnchor.constraint(equalToConstant: 50)
+        ])
     }
 }

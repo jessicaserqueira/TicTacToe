@@ -10,7 +10,6 @@ import UIKit
 class BoardViewController: UIViewController {
     var viewModel: BoardViewModel
     var customView = BoarView()
-    var selectedBoardSize: BoardDimensions?
     
     // MARK: - Initializer
     init(viewModel: BoardViewModel) {
@@ -23,18 +22,23 @@ class BoardViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        view = customView
-        customView.delegate = self
-        view.backgroundColor = DesignSystem.Colors.background
+         super.viewDidLoad()
+         view = customView
+         customView.delegate = self
+         view.backgroundColor = DesignSystem.Colors.background
+
+         if let boardSize = viewModel.boardSize, let playerOneName = viewModel.playerOneName, let playerTwoName = viewModel.playerTwoName {
+             customView.updateBoardSize(with: boardSize)
+             customView.updatePlayerNames(playerOne: playerOneName, playerTwo: playerTwoName)
+         }
         
-        if let boardSize = viewModel.boardSize {
-            customView.updateBoardSize(with: boardSize)
-        }
-    }
+         viewModel.resetGame()
+     }
 }
 
 // MARK: - Delegates
 extension BoardViewController: BoardViewDelegate {
-    
+    func didSelectField(at row: Int, column: Int) {
+     
+    }
 }
