@@ -21,6 +21,9 @@
 		A4190FA02AEB1DC200416ABE /* BoardDimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4190F9F2AEB1DC200416ABE /* BoardDimensions.swift */; };
 		A4190FA32AEB28A600416ABE /* BoarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4190FA22AEB28A600416ABE /* BoarView.swift */; };
 		A4190FA72AEBEA5600416ABE /* BoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4190FA62AEBEA5600416ABE /* BoardViewController.swift */; };
+		A4190FA92AEC268E00416ABE /* BoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4190FA82AEC268E00416ABE /* BoardViewModel.swift */; };
+		A4190FAB2AEC269E00416ABE /* BoardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4190FAA2AEC269E00416ABE /* BoardCoordinator.swift */; };
+		A4190FAD2AEC283100416ABE /* BoardCoordinating.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4190FAC2AEC283100416ABE /* BoardCoordinating.swift */; };
 		A4CC800A2AEA915300BD6F6E /* DS.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC80092AEA915300BD6F6E /* DS.swift */; };
 		A4CC800C2AEA916400BD6F6E /* DS+Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC800B2AEA916300BD6F6E /* DS+Colors.swift */; };
 		A4CC800E2AEA91A100BD6F6E /* UIColor+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC800D2AEA91A100BD6F6E /* UIColor+ext.swift */; };
@@ -73,6 +76,9 @@
 		A4190F9F2AEB1DC200416ABE /* BoardDimensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardDimensions.swift; sourceTree = "<group>"; };
 		A4190FA22AEB28A600416ABE /* BoarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoarView.swift; sourceTree = "<group>"; };
 		A4190FA62AEBEA5600416ABE /* BoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewController.swift; sourceTree = "<group>"; };
+		A4190FA82AEC268E00416ABE /* BoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewModel.swift; sourceTree = "<group>"; };
+		A4190FAA2AEC269E00416ABE /* BoardCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCoordinator.swift; sourceTree = "<group>"; };
+		A4190FAC2AEC283100416ABE /* BoardCoordinating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCoordinating.swift; sourceTree = "<group>"; };
 		A4CC80092AEA915300BD6F6E /* DS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DS.swift; sourceTree = "<group>"; };
 		A4CC800B2AEA916300BD6F6E /* DS+Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DS+Colors.swift"; sourceTree = "<group>"; };
 		A4CC800D2AEA91A100BD6F6E /* UIColor+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+ext.swift"; sourceTree = "<group>"; };
@@ -135,6 +141,8 @@
 			children = (
 				A4190FA22AEB28A600416ABE /* BoarView.swift */,
 				A4190FA62AEBEA5600416ABE /* BoardViewController.swift */,
+				A4190FA82AEC268E00416ABE /* BoardViewModel.swift */,
+				A4190FAA2AEC269E00416ABE /* BoardCoordinator.swift */,
 			);
 			path = BoardViews;
 			sourceTree = "<group>";
@@ -296,6 +304,7 @@
 			children = (
 				A4FA52ED2AEA8EFA000E09D0 /* Coordinator.swift */,
 				A4190F942AEAA35D00416ABE /* HomeScreenCoordinating.swift */,
+				A4190FAC2AEC283100416ABE /* BoardCoordinating.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -439,6 +448,7 @@
 				A4190F8F2AEA9FD600416ABE /* HistoricViewModel.swift in Sources */,
 				A4190F9B2AEAD5FE00416ABE /* CustomTextField.swift in Sources */,
 				A4190F8B2AEA9F8F00416ABE /* HomeScreenViewModel.swift in Sources */,
+				A4190FAD2AEC283100416ABE /* BoardCoordinating.swift in Sources */,
 				A4FA52F22AEA8F9D000E09D0 /* HomeScreenCoordinator.swift in Sources */,
 				A4190F972AEAAB6600416ABE /* CustomUISegmentedControl.swift in Sources */,
 				A4CC800E2AEA91A100BD6F6E /* UIColor+ext.swift in Sources */,
@@ -447,6 +457,8 @@
 				A4190FA72AEBEA5600416ABE /* BoardViewController.swift in Sources */,
 				A4EFB0552AE9C83100F03ACC /* AppDelegate.swift in Sources */,
 				A4190FA32AEB28A600416ABE /* BoarView.swift in Sources */,
+				A4190FA92AEC268E00416ABE /* BoardViewModel.swift in Sources */,
+				A4190FAB2AEC269E00416ABE /* BoardCoordinator.swift in Sources */,
 				A4CC80162AEA993B00BD6F6E /* UIFont+ext.swift in Sources */,
 				A4190F892AEA9F8600416ABE /* HomeScreenView.swift in Sources */,
 				A4190F912AEA9FDF00416ABE /* HistoricView.swift in Sources */,

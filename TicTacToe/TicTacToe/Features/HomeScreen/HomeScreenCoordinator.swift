@@ -24,8 +24,7 @@ class HomeScreenCoordinator: Coordinator {
 
 extension HomeScreenCoordinator: HomeScreenCoordinating {
     func showBoardScreen(withBoardSize boardSize: BoardDimensions) {
-        let viewController = BoardViewViewController()
-        viewController.customView.ticTacToeBoard.dimension = boardSize.width
-        navigationController.pushViewController(viewController, animated: true)
+        let coordinator = BoardCoordinator(navigationController: navigationController, boardSize: boardSize)
+        coordinator.start()
     }
 }

@@ -28,7 +28,6 @@ class CustomBoardStackView: UIStackView {
 }
 
 // MARK: - METHODS
-
 extension CustomBoardStackView {
     private func updateBoard() {
         for subview in arrangedSubviews {

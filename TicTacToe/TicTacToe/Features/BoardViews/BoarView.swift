@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol BoardViewDelegate: AnyObject {
+    
+}
+
 class BoarView: UIView {
+    weak var delegate: BoardViewDelegate?
+    
     private lazy var boardTitle: UILabel = {
         let labal = UILabel()
         labal.text = "Vez do jogador"
