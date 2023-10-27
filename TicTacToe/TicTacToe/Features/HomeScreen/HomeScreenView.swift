@@ -7,9 +7,14 @@
 
 import UIKit
 
+protocol HomeScreenViewDelegate: AnyObject {
+    func didTappedStartMatchButton(withBoardSize boardSize: BoardDimensions)
+}
+
 class HomeScreenView: UIView {
+    weak var delegate: HomeScreenViewDelegate?
     let dimensions: [BoardDimensions] = [.threeByThree, .fourByFour, .fiveByFive, .sixBySix, .sevenBySeven, .eightByEight, .nineByNine, .tenByTen]
-    let selectedSegmentIndex = 0
+    var selectedSegmentIndex = 0
     
     private lazy var boardTitle: UILabel = {
         let labal = UILabel()
@@ -36,7 +41,7 @@ class HomeScreenView: UIView {
         return CustomButton(
             title: "Começar Partida",
             textColor: .white,
-            backgroundColor: DesignSystem.Colors.tertiary, 
+            backgroundColor: DesignSystem.Colors.tertiary,
             opacity: 1.0,
             cornerRadius: 14,
             font: UIFont.sFProText(ofSize: 17, weight: .bold),
@@ -103,12 +108,18 @@ extension HomeScreenView {
 // MARK: - Actions
 extension HomeScreenView {
     func setupActions() {
-        
+        startMatchButton.addTarget(self, action: #selector(didTappedStartMatchButton), for: .touchUpInside)
+    }
+    
+    @objc func didTappedStartMatchButton() {
+        let dimension = dimensions[selectedSegmentIndex]
+        delegate?.didTappedStartMatchButton(withBoardSize: dimension)
     }
 }
 
 // MARK: - Delegates
 extension HomeScreenView: CustomSegmentedControlDelegate {
     func segmentedControl(_ segmentedControl: CustomUISegmentedControl, didSelectSegmentAtIndex index: Int) {
+        selectedSegmentIndex = index
     }
 }

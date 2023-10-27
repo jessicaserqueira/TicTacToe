@@ -11,6 +11,7 @@ class HomeScreenViewController: UIViewController {
     var viewModel: HomeScreenViewModel
     var customView = HomeScreenView()
     
+    // MARK: - Initializer
     init(viewModel: HomeScreenViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -23,12 +24,14 @@ class HomeScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view = customView
+        customView.delegate = self
         view.backgroundColor = DesignSystem.Colors.background
     }
-    
-    func showBoardScreen(){
-        if let coordinator = viewModel.coordinator {
-            coordinator.showBoardScreen()
-        }
+}
+
+// MARK: - Delegates
+extension HomeScreenViewController: HomeScreenViewDelegate {
+    func didTappedStartMatchButton(withBoardSize boardSize: BoardDimensions) {
+        viewModel.didTappedStartMatchButton(withBoardSize: boardSize)
     }
 }

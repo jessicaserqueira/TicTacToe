@@ -10,16 +10,11 @@ import UIKit
 struct BoardDimensions {
     var width: Int
     var height: Int
-
-    init(width: Int, height: Int) {
-        self.width = width
-        self.height = height
-    }
-
+    
     var stringValue: String {
         return "\(width)x\(height)"
     }
-
+    
     static let threeByThree = BoardDimensions(width: 3, height: 3)
     static let fourByFour = BoardDimensions(width: 4, height: 4)
     static let fiveByFive = BoardDimensions(width: 5, height: 5)

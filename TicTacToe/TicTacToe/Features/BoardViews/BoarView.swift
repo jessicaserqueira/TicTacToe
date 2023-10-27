@@ -18,9 +18,8 @@ class BoarView: UIView {
         return labal
     }()
     
-    private lazy var ticTacToeBoard: CustomBoardStackView = {
+    lazy var ticTacToeBoard: CustomBoardStackView = {
         return CustomBoardStackView(
-            dimension: 4,
             accessibilityIdentifier:"BoarView.ticTacToeBoard"
         )
     }()
@@ -30,7 +29,6 @@ class BoarView: UIView {
         super.init(frame: frame)
         configureSubviews()
         setupConstraints()
-        setupActions()
     }
     
     required init?(coder: NSCoder) {
@@ -60,7 +58,7 @@ extension BoarView {
 
 // MARK: - Actions
 extension BoarView {
-    func setupActions() {
-        
+    func updateBoardSize(with dimension: BoardDimensions) {
+        ticTacToeBoard.dimension = dimension.width
     }
 }
