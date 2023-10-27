@@ -14,6 +14,7 @@ protocol CustomSegmentedControlDelegate: AnyObject {
 class CustomUISegmentedControl: UISegmentedControl {
     weak var delegate: CustomSegmentedControlDelegate?
     
+    // MARK: - Initializer
     init(
         segmentTitles: [String],
         selectedSegmentIndex: Int,
@@ -23,15 +24,21 @@ class CustomUISegmentedControl: UISegmentedControl {
         self.selectedSegmentIndex = selectedSegmentIndex
         self.translatesAutoresizingMaskIntoConstraints = false
         self.accessibilityIdentifier = accessibilityIdentifier
-        
-        addTarget(self, action: #selector(segmentTapped), for: .valueChanged)
+        setupMethods()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+// MARK: - METHODS
+extension CustomUISegmentedControl {
+   private func setupMethods() {
+        addTarget(self, action: #selector(segmentTapped), for: .valueChanged)
+    }
     
-    @objc func segmentTapped() {
+    @objc private func segmentTapped() {
         delegate?.segmentedControl(self, didSelectSegmentAtIndex: selectedSegmentIndex)
     }
 }

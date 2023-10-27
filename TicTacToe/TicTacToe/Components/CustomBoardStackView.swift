@@ -8,15 +8,33 @@
 import UIKit
 
 class CustomBoardStackView: UIStackView {
+    var dimension: Int = 3 {
+        didSet {
+            updateBoard()
+        }
+    }
     
-    init(
-        dimension: Int,
-        accessibilityIdentifier: String
-    ) {
+    init(accessibilityIdentifier: String) {
         super.init(frame: .zero)
         self.translatesAutoresizingMaskIntoConstraints = false
         self.axis = .vertical
         self.accessibilityIdentifier = accessibilityIdentifier
+        updateBoard()
+    }
+    
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+// MARK: - METHODS
+
+extension CustomBoardStackView {
+    private func updateBoard() {
+        for subview in arrangedSubviews {
+            removeArrangedSubview(subview)
+            subview.removeFromSuperview()
+        }
         
         for _ in 0..<dimension {
             let rowStackView = UIStackView()
@@ -28,7 +46,6 @@ class CustomBoardStackView: UIStackView {
                 button.setTitle("", for: .normal)
                 button.setTitleColor(.black, for: .normal)
                 button.backgroundColor = .white
-                button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
                 button.layer.borderWidth = 1
                 button.layer.borderColor = DesignSystem.Colors.borderColorBoard.cgColor
                 
@@ -37,13 +54,5 @@ class CustomBoardStackView: UIStackView {
             
             addArrangedSubview(rowStackView)
         }
-    }
-    
-    required init(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    @objc func buttonTapped(_ sender: UIButton) {
-    
     }
 }

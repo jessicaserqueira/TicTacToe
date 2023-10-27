@@ -8,5 +8,5 @@
 import UIKit
 
 protocol HomeScreenCoordinating: AnyObject {
-    func showBoardScreen()
+    func showBoardScreen(withBoardSize boardSize: BoardDimensions)
 }

@@ -13,6 +13,7 @@ class CustomButton: UIButton {
         title: String,
         textColor: UIColor,
         backgroundColor: UIColor?,
+        opacity: CGFloat?,
         cornerRadius: CGFloat,
         font: UIFont,
         accessibilityIdentifier: String
@@ -25,12 +26,15 @@ class CustomButton: UIButton {
         setTitleColor(textColor, for: .normal)
         
         if let backgroundColor = backgroundColor {
-            self.backgroundColor = backgroundColor
+            if let opacity = opacity {
+                self.backgroundColor = backgroundColor.withAlphaComponent(opacity)
+            } else {
+                self.backgroundColor = backgroundColor
+            }
         }
         layer.cornerRadius = cornerRadius
         
         NSLayoutConstraint.activate([
-            widthAnchor.constraint(equalToConstant: 342),
             heightAnchor.constraint(equalToConstant: 50)
         ])
     }

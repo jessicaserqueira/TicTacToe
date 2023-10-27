@@ -9,12 +9,14 @@ import Foundation
 
 class HomeScreenViewModel {
     var coordinator: HomeScreenCoordinating?
+    var selectedBoardSize: BoardDimensions?
     
     init(coordinator: HomeScreenCoordinating) {
         self.coordinator = coordinator
     }
     
-    func didTapSignUpButton() {
-        coordinator?.showBoardScreen()
+    func didTappedStartMatchButton(withBoardSize boardSize: BoardDimensions) {
+        selectedBoardSize = boardSize
+        coordinator?.showBoardScreen(withBoardSize: boardSize)
     }
 }
