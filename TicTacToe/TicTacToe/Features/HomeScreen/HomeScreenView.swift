@@ -8,16 +8,25 @@
 import UIKit
 
 class HomeScreenView: UIView {
-    let jogadores = ["vs Jogador", "vs Bot"]
+    let dimensions: [BoardDimensions] = [.threeByThree, .fourByFour, .fiveByFive, .sixBySix, .sevenBySeven, .eightByEight, .nineByNine, .tenByTen]
     let selectedSegmentIndex = 0
+    
+    private lazy var boardTitle: UILabel = {
+        let labal = UILabel()
+        labal.text = "Tamanho do tabuleiro"
+        labal.font = UIFont.sFProText(ofSize: 20, weight: .medium)
+        labal.textColor = .black
+        labal.translatesAutoresizingMaskIntoConstraints = false
+        labal.accessibilityIdentifier = "HomeScreenView.boardTitle"
+        return labal
+    }()
     
     private lazy var segmentedButton: CustomUISegmentedControl = {
         let button = CustomUISegmentedControl(
-            segmentTitles: jogadores,
+            segmentTitles: dimensions.map {$0.stringValue},
             selectedSegmentIndex: selectedSegmentIndex,
             accessibilityIdentifier: "HomeScreenView.segmentedButton"
         )
-        
         button.translatesAutoresizingMaskIntoConstraints = false
         button.delegate = self
         return button
@@ -27,33 +36,23 @@ class HomeScreenView: UIView {
         return CustomButton(
             title: "Começar Partida",
             textColor: .white,
-            backgroundColor: DesignSystem.Colors.tertiary,
+            backgroundColor: DesignSystem.Colors.tertiary, 
+            opacity: 1.0,
             cornerRadius: 14,
             font: UIFont.sFProText(ofSize: 17, weight: .bold),
             accessibilityIdentifier: "HomeScreenView.startMatch"
         )
     }()
     
-    private lazy var playerOneTextField: CustomTextField = {
-        return CustomTextField(
-            placeholder: "Jogador 1",
-            type: "Jogador 1", 
-            accessibilityIdentifier: "HomeScreenView.playerOneTextField"
-        )
-    }()
-    
-    private lazy var playerTwoTextField: CustomTextField = {
-        return CustomTextField(
-            placeholder: "Jogador 2",
-            type: "Jogador 2",
-            accessibilityIdentifier: "HomeScreenView.playerTwoTextField"
-        )
-    }()
-    
-    private lazy var ticTacToeBoard: CustomBoardStackView = {
-        return CustomBoardStackView(
-            dimension: 4,
-            accessibilityIdentifier:"HomeScreenView.ticTacToeBoard"
+    private lazy var matchHistoryButton: CustomButton = {
+        return CustomButton(
+            title: "Histórico das Partidas",
+            textColor: DesignSystem.Colors.tertiary,
+            backgroundColor: DesignSystem.Colors.tertiary,
+            opacity: 0.15,
+            cornerRadius: 14,
+            font: UIFont.sFProText(ofSize: 17, weight: .bold),
+            accessibilityIdentifier: "HomeScreenView.startMatch"
         )
     }()
     
@@ -73,28 +72,30 @@ class HomeScreenView: UIView {
 // MARK: - Constraints
 extension HomeScreenView {
     private func configureSubviews() {
+        addSubview(boardTitle)
         addSubview(segmentedButton)
         addSubview(startMatchButton)
-        addSubview(playerOneTextField)
-        addSubview(playerTwoTextField)
-        addSubview(ticTacToeBoard)
+        addSubview(matchHistoryButton)
     }
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
+            boardTitle.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 90),
+            boardTitle.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -89),
+            boardTitle.bottomAnchor.constraint(equalTo: segmentedButton.topAnchor, constant: -18),
+            
             segmentedButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            segmentedButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 100),
+            segmentedButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+            segmentedButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
             
-            startMatchButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            startMatchButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 150),
+            startMatchButton.topAnchor.constraint(equalTo: segmentedButton.bottomAnchor, constant: 87),
+            startMatchButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+            startMatchButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
             
-            playerOneTextField.centerXAnchor.constraint(equalTo: centerXAnchor),
-            playerOneTextField.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 200),
-            playerTwoTextField.centerXAnchor.constraint(equalTo: centerXAnchor),
-            playerTwoTextField.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 250),
-            
-            ticTacToeBoard.centerXAnchor.constraint(equalTo: centerXAnchor),
-            ticTacToeBoard.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 300),
+            matchHistoryButton.topAnchor.constraint(equalTo: startMatchButton.bottomAnchor, constant: 8),
+            matchHistoryButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+            matchHistoryButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+            matchHistoryButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -24)
         ])
     }
 }

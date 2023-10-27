@@ -18,6 +18,8 @@
 		A4190F992AEAD22C00416ABE /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4190F982AEAD22C00416ABE /* CustomButton.swift */; };
 		A4190F9B2AEAD5FE00416ABE /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4190F9A2AEAD5FE00416ABE /* CustomTextField.swift */; };
 		A4190F9D2AEAE13A00416ABE /* CustomBoardStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4190F9C2AEAE13A00416ABE /* CustomBoardStackView.swift */; };
+		A4190FA02AEB1DC200416ABE /* BoardDimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4190F9F2AEB1DC200416ABE /* BoardDimensions.swift */; };
+		A4190FA32AEB28A600416ABE /* BoarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4190FA22AEB28A600416ABE /* BoarView.swift */; };
 		A4CC800A2AEA915300BD6F6E /* DS.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC80092AEA915300BD6F6E /* DS.swift */; };
 		A4CC800C2AEA916400BD6F6E /* DS+Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC800B2AEA916300BD6F6E /* DS+Colors.swift */; };
 		A4CC800E2AEA91A100BD6F6E /* UIColor+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC800D2AEA91A100BD6F6E /* UIColor+ext.swift */; };
@@ -67,6 +69,8 @@
 		A4190F982AEAD22C00416ABE /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		A4190F9A2AEAD5FE00416ABE /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		A4190F9C2AEAE13A00416ABE /* CustomBoardStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBoardStackView.swift; sourceTree = "<group>"; };
+		A4190F9F2AEB1DC200416ABE /* BoardDimensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardDimensions.swift; sourceTree = "<group>"; };
+		A4190FA22AEB28A600416ABE /* BoarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoarView.swift; sourceTree = "<group>"; };
 		A4CC80092AEA915300BD6F6E /* DS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DS.swift; sourceTree = "<group>"; };
 		A4CC800B2AEA916300BD6F6E /* DS+Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DS+Colors.swift"; sourceTree = "<group>"; };
 		A4CC800D2AEA91A100BD6F6E /* UIColor+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+ext.swift"; sourceTree = "<group>"; };
@@ -116,6 +120,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A4190F9E2AEB1D9C00416ABE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A4190F9F2AEB1DC200416ABE /* BoardDimensions.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A4190FA12AEB288700416ABE /* BoardViews */ = {
+			isa = PBXGroup;
+			children = (
+				A4190FA22AEB28A600416ABE /* BoarView.swift */,
+			);
+			path = BoardViews;
+			sourceTree = "<group>";
+		};
 		A4CC80172AEA9B0400BD6F6E /* Historic */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,6 +221,8 @@
 		A4FA52E52AEA8E61000E09D0 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				A4190FA12AEB288700416ABE /* BoardViews */,
+				A4190F9E2AEB1D9C00416ABE /* Models */,
 				A4FA52EC2AEA8EDB000E09D0 /* Protocols */,
 				A4CC80182AEA9B1A00BD6F6E /* HomeScreen */,
 				A4CC80172AEA9B0400BD6F6E /* Historic */,
@@ -420,6 +442,7 @@
 				A4EFB0592AE9C83100F03ACC /* HomeScreenViewController.swift in Sources */,
 				A4FA52F02AEA8F32000E09D0 /* AppCoordinator.swift in Sources */,
 				A4EFB0552AE9C83100F03ACC /* AppDelegate.swift in Sources */,
+				A4190FA32AEB28A600416ABE /* BoarView.swift in Sources */,
 				A4CC80162AEA993B00BD6F6E /* UIFont+ext.swift in Sources */,
 				A4190F892AEA9F8600416ABE /* HomeScreenView.swift in Sources */,
 				A4190F912AEA9FDF00416ABE /* HistoricView.swift in Sources */,
@@ -427,6 +450,7 @@
 				A4CC800A2AEA915300BD6F6E /* DS.swift in Sources */,
 				A4190F932AEA9FEB00416ABE /* HistoricCoordinator.swift in Sources */,
 				A4190F9D2AEAE13A00416ABE /* CustomBoardStackView.swift in Sources */,
+				A4190FA02AEB1DC200416ABE /* BoardDimensions.swift in Sources */,
 				A4CC800C2AEA916400BD6F6E /* DS+Colors.swift in Sources */,
 				A4EFB0572AE9C83100F03ACC /* SceneDelegate.swift in Sources */,
 			);
