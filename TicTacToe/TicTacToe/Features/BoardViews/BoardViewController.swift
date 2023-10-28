@@ -54,13 +54,6 @@ extension BoardViewController: BoardViewDelegate {
 
 // MARK: - Delegates
 extension BoardViewController: BoardViewModelDelegate {
-    
-    func showWinMessage(winner: String) {
-        let alert = UIAlertController(title: "Vitória!", message: "\(winner) venceu o jogo!", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        present(alert, animated: true, completion: nil)
-    }
-    
     func showDrawMessage() {
         let alert = UIAlertController(title: "Empate!", message: "O jogo empatou!", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -77,6 +70,21 @@ extension BoardViewController: BoardViewModelDelegate {
     
     func clearCellImages() {
         customView.clearCellImages()
+    }
+    func disableButtons() {
+        customView.disableButtons()
+    }
+    
+    func enableButtons() {
+        customView.enableButtons()
+    }
+    
+    func updatePlayerLabelToWinner() {
+        customView.updatePlayerLabelToWinner()
+    }
+    
+    func updatePlayerLabelToPlayer() {
+        customView.updatePlayerLabelToPlayer()
     }
     
 }

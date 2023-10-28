@@ -20,6 +20,7 @@ class BoarView: UIView {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 10
+        stackView.distribution = .equalSpacing
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.accessibilityIdentifier = "BoarView.titleStackView"
         return stackView
@@ -28,8 +29,10 @@ class BoarView: UIView {
     private lazy var boardTitle: UILabel = {
         let labal = UILabel()
         labal.text = "Vez do jogador"
-        labal.font = UIFont.sFProText(ofSize: 20, weight: .medium)
         labal.textColor = .black
+        labal.textAlignment = .center
+        labal.font = UIFont.sFProText(ofSize: 20, weight: .medium)
+
         labal.translatesAutoresizingMaskIntoConstraints = false
         labal.accessibilityIdentifier = "BoarView.boardTitle"
         return labal
@@ -177,7 +180,6 @@ extension BoarView {
         
         if let rowStack = ticTacToeBoard.arrangedSubviews[row] as? UIStackView,
            let button = rowStack.arrangedSubviews[column] as? CustomPlayerButton {
-            
             button.playerImageView.image = UIImage(named: imageName)
         }
     }
@@ -189,6 +191,32 @@ extension BoarView {
                 button.playerImageView.image = nil
             }
         }
+    }
+    
+    func disableButtons() {
+        for rowStack in ticTacToeBoard.arrangedSubviews {
+            guard let rowStack = rowStack as? UIStackView else { continue }
+            for case let button as CustomPlayerButton in rowStack.arrangedSubviews {
+                button.isUserInteractionEnabled = false
+            }
+        }
+    }
+    
+    func enableButtons() {
+        for rowStack in ticTacToeBoard.arrangedSubviews {
+            guard let rowStack = rowStack as? UIStackView else { continue }
+            for case let button as CustomPlayerButton in rowStack.arrangedSubviews {
+                button.isUserInteractionEnabled = true
+            }
+        }
+    }
+    
+    func updatePlayerLabelToWinner() {
+        boardTitle.text = "Vencedor 🏆"
+    }
+    
+    func updatePlayerLabelToPlayer() {
+        boardTitle.text = "Jogador da vez"
     }
 }
 
