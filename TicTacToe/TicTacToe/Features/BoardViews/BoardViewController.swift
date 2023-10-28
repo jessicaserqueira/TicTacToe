@@ -22,23 +22,31 @@ class BoardViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-         super.viewDidLoad()
-         view = customView
-         customView.delegate = self
-         view.backgroundColor = DesignSystem.Colors.background
-
-         if let boardSize = viewModel.boardSize, let playerOneName = viewModel.playerOneName, let playerTwoName = viewModel.playerTwoName {
-             customView.updateBoardSize(with: boardSize)
-             customView.updatePlayerNames(playerOne: playerOneName, playerTwo: playerTwoName)
-         }
+        super.viewDidLoad()
+        view = customView
+        customView.delegate = self
+        viewModel.delegate = self
+        view.backgroundColor = DesignSystem.Colors.background
         
-         viewModel.resetGame()
-     }
+        if let boardSize = viewModel.boardSize {
+            customView.updateBoardSize(with: boardSize)
+        }
+    }
 }
 
 // MARK: - Delegates
 extension BoardViewController: BoardViewDelegate {
-    func didSelectField(at row: Int, column: Int) {
-     
+    func didSelectField(playerOne: String, playerTwo: String, at row: Int, column: Int) {
+        if let playerOneName = viewModel.playerOneName, let playerTwoName = viewModel.playerTwoName {
+            viewModel.makeMove(row: row, column: column)
+            customView.updatePlayerNames(playerOne: playerOneName, playerTwo: playerTwoName, at: row, column: column)
+        }
+    }
+}
+
+// MARK: - Delegates
+extension BoardViewController: BoardViewModelDelegate {
+    func setButtonImages(forPlayer: Int, at row: Int, column: Int) {
+        customView.setButtonImages(forPlayer: forPlayer, at: row, column: column)
     }
 }

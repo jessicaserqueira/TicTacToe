@@ -33,7 +33,6 @@ class Game {
             switchPlayer()
         }
     }
-
     func isValidMove(row: Int, column: Int) -> Bool {
         return board[row][column] == nil
     }

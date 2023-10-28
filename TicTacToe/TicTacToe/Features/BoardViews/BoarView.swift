@@ -8,7 +8,7 @@
 import UIKit
 
 protocol BoardViewDelegate: AnyObject {
-    func didSelectField(at row: Int, column: Int)
+    func didSelectField(playerOne: String, playerTwo: String, at row: Int, column: Int)
 }
 
 class BoarView: UIView {
@@ -44,9 +44,11 @@ class BoarView: UIView {
     }()
     
     private  lazy var ticTacToeBoard: CustomBoardStackView = {
-        return CustomBoardStackView(
+        let stackView =  CustomBoardStackView(
             accessibilityIdentifier:"BoarView.ticTacToeBoard"
         )
+        stackView.delegate = self
+        return stackView
     }()
     
     // MARK: - Initializer
@@ -90,23 +92,44 @@ extension BoarView {
         ticTacToeBoard.dimension = dimension.width
     }
     
-    func updatePlayerNames(playerOne: String, playerTwo: String) {
+    func updatePlayerNames(playerOne: String, playerTwo: String, at row: Int, column: Int) {
         let selectedPlayer: String
         let textColor: UIColor
         
         if namePlayerTitle.text == playerOne {
             selectedPlayer = playerTwo
             textColor = DesignSystem.Colors.accent
+            setButtonImages(forPlayer: 2, at: row, column: column)
         } else {
             selectedPlayer = playerOne
             textColor = DesignSystem.Colors.tertiary
+            setButtonImages(forPlayer: 1, at: row, column: column)
         }
-        
         namePlayerTitle.text = selectedPlayer
         namePlayerTitle.textColor = textColor
     }
     
-    @objc private func fieldSelected(_ sender: UIButton) {
+    func setButtonImages(forPlayer player: Int, at row: Int, column: Int) {
+        let imageName: String
+        if player == 1 {
+            imageName = "player1_image"
+        } else {
+            imageName = "player2_image"
+        }
+
+        if let rowStack = ticTacToeBoard.arrangedSubviews[row] as? UIStackView,
+           let button = rowStack.arrangedSubviews[column] as? CustomPlayerButton {
         
+            button.playerImageView.image = UIImage(named: imageName)
+        }
+    }
+}
+
+// MARK: - Delegate
+extension BoarView: CustomBoardStackViewDelegate {
+    func buttonPressed(at row: Int, column: Int) {
+        if let playerOne = namePlayerTitle.text, let playerTwo = namePlayerTitle.text {
+            delegate?.didSelectField(playerOne: playerOne, playerTwo: playerTwo, at: row, column: column)
+        }
     }
 }
