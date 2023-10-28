@@ -9,6 +9,9 @@ import Foundation
 
 protocol BoardViewModelDelegate: AnyObject {
     func setButtonImages(forPlayer: Int, at row: Int, column: Int)
+    func showWinMessage(winner: String)
+    func showDrawMessage()
+    func switchPlayerLabel(player: String)
 }
 
 class BoardViewModel {
@@ -29,14 +32,16 @@ class BoardViewModel {
         if game.isValidMove(row: row, column: column) {
             game.makeMove(row: row, column: column)
             delegate?.setButtonImages(forPlayer: currentPlayer, at: row, column: column)
-
-            if game.checkForWin() {
-                
+            
+            if (game.checkForWin() != nil) {
+                let winner = game.currentPlayerName()
+                delegate?.showWinMessage(winner: winner)
             } else if game.isGameOver() {
-                
+                delegate?.showDrawMessage()
             } else {
-                
                 game.switchPlayer()
+                let player = game.currentPlayerName()
+                delegate?.switchPlayerLabel(player: player)
             }
         }
     }

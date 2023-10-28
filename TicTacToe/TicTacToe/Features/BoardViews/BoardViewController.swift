@@ -46,6 +46,22 @@ extension BoardViewController: BoardViewDelegate {
 
 // MARK: - Delegates
 extension BoardViewController: BoardViewModelDelegate {
+    func showWinMessage(winner: String) {
+        let alert = UIAlertController(title: "Vitória!", message: "\(winner) venceu o jogo!", preferredStyle: .alert)
+             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+             present(alert, animated: true, completion: nil)
+    }
+    
+    func showDrawMessage() {
+        let alert = UIAlertController(title: "Empate!", message: "O jogo empatou!", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                present(alert, animated: true, completion: nil)
+    }
+    
+    func switchPlayerLabel(player: String) {
+        customView.namePlayerTitle.text = player
+    }
+    
     func setButtonImages(forPlayer: Int, at row: Int, column: Int) {
         customView.setButtonImages(forPlayer: forPlayer, at: row, column: column)
     }

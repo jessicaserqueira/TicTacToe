@@ -33,7 +33,7 @@ class BoarView: UIView {
         return labal
     }()
     
-    private lazy var namePlayerTitle: UILabel = {
+    lazy var namePlayerTitle: UILabel = {
         let labal = UILabel()
         labal.text = ""
         labal.textAlignment = .center
