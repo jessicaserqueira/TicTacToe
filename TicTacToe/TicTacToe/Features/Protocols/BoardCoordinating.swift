@@ -8,4 +8,5 @@
 import Foundation
 
 protocol BoardCoordinating {
+    func startNewGame()
 }

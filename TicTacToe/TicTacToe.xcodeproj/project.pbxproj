@@ -178,10 +178,10 @@
 		A4CC80182AEA9B1A00BD6F6E /* HomeScreen */ = {
 			isa = PBXGroup;
 			children = (
-				A4FA52F12AEA8F9D000E09D0 /* HomeScreenCoordinator.swift */,
 				A4190F882AEA9F8600416ABE /* HomeScreenView.swift */,
 				A4EFB0582AE9C83100F03ACC /* HomeScreenViewController.swift */,
 				A4190F8A2AEA9F8F00416ABE /* HomeScreenViewModel.swift */,
+				A4FA52F12AEA8F9D000E09D0 /* HomeScreenCoordinator.swift */,
 			);
 			path = HomeScreen;
 			sourceTree = "<group>";

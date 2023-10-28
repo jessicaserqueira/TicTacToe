@@ -110,7 +110,7 @@ class HomeScreenView: UIView {
             opacity: 1.0,
             cornerRadius: 14,
             font: UIFont.sFProText(ofSize: 17, weight: .bold),
-            accessibilityIdentifier: "HomeScreenView.startMatch"
+            accessibilityIdentifier: "HomeScreenView.startMatchButton"
         )
     }()
     
@@ -122,7 +122,7 @@ class HomeScreenView: UIView {
             opacity: 0.15,
             cornerRadius: 14,
             font: UIFont.sFProText(ofSize: 17, weight: .bold),
-            accessibilityIdentifier: "HomeScreenView.startMatch"
+            accessibilityIdentifier: "HomeScreenView.matchHistoryButton"
         )
     }()
     
