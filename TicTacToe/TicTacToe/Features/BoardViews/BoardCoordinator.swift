@@ -33,5 +33,8 @@ class BoardCoordinator: Coordinator {
 
 // MARK: - Delegate
 extension BoardCoordinator: BoardCoordinating {
-    
+    func startNewGame() {
+        let coordinator = HomeScreenCoordinator(navigationController: navigationController)
+        coordinator.start()
+    }
 }

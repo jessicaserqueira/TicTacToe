@@ -12,6 +12,7 @@ protocol BoardViewModelDelegate: AnyObject {
     func showWinMessage(winner: String)
     func showDrawMessage()
     func switchPlayerLabel(player: String)
+    func clearCellImages()
 }
 
 class BoardViewModel {
@@ -44,5 +45,14 @@ class BoardViewModel {
                 delegate?.switchPlayerLabel(player: player)
             }
         }
+    }
+    
+    func resetGame() {
+        game.resetGame()
+        delegate?.clearCellImages()
+    }
+    
+    func startNewGame() {
+        coordinator?.startNewGame()
     }
 }
