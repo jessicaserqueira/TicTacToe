@@ -51,7 +51,40 @@ class BoarView: UIView {
         return stackView
     }()
     
-    // MARK: - Initializer
+    private lazy var buttonStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 8
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.accessibilityIdentifier = "BoarView.buttonStackView"
+        return stackView
+    }()
+    
+    private lazy var startMatchButton: CustomButton = {
+        return CustomButton(
+            title: "Recomeçar",
+            textColor: .white,
+            backgroundColor: DesignSystem.Colors.tertiary,
+            opacity: 1.0,
+            cornerRadius: 14,
+            font: UIFont.sFProText(ofSize: 17, weight: .bold),
+            accessibilityIdentifier: "BoarView.startMatch"
+        )
+    }()
+    
+    private lazy var matchHistoryButton: CustomButton = {
+        return CustomButton(
+            title: "Novo jogo",
+            textColor: DesignSystem.Colors.tertiary,
+            backgroundColor: DesignSystem.Colors.tertiary,
+            opacity: 0.15,
+            cornerRadius: 14,
+            font: UIFont.sFProText(ofSize: 17, weight: .bold),
+            accessibilityIdentifier: "BoarView.startMatch"
+        )
+    }()
+    
+// MARK: - Initializer
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureSubviews()
@@ -71,6 +104,10 @@ extension BoarView {
         titleStackView.addArrangedSubview(namePlayerTitle)
         
         addSubview(ticTacToeBoard)
+        
+        addSubview(buttonStackView)
+        buttonStackView.addArrangedSubview(startMatchButton)
+        buttonStackView.addArrangedSubview(matchHistoryButton)
     }
     
     private func setupConstraints() {
@@ -79,9 +116,14 @@ extension BoarView {
             titleStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 121),
             titleStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -121),
             
-            ticTacToeBoard.topAnchor.constraint(equalTo: titleStackView.bottomAnchor, constant: 87),
+            ticTacToeBoard.topAnchor.constraint(equalTo: titleStackView.bottomAnchor, constant: 55),
             ticTacToeBoard.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 22),
             ticTacToeBoard.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -22),
+            
+            buttonStackView.topAnchor.constraint(equalTo: ticTacToeBoard.bottomAnchor, constant: 144),
+            buttonStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+            buttonStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+            buttonStackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
         ])
     }
 }

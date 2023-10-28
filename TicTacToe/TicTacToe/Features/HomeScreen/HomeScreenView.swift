@@ -160,7 +160,7 @@ extension HomeScreenView {
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            logoImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 5),
+            logoImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 50),
             logoImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 85),
             logoImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -85),
             logoImageView.heightAnchor.constraint(equalToConstant: 95),
@@ -176,7 +176,7 @@ extension HomeScreenView {
             buttonStackView.topAnchor.constraint(equalTo: boardStackView.bottomAnchor, constant: 85),
             buttonStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             buttonStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
-            buttonStackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -24),
+            buttonStackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
         ])
     }
 }
