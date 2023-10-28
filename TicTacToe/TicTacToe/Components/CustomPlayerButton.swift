@@ -8,7 +8,7 @@
 import UIKit
 
 class CustomPlayerButton: UIButton {
-    let playerImageView: UIImageView = {
+    lazy var playerImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false

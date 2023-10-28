@@ -13,11 +13,18 @@ protocol HomeScreenViewDelegate: AnyObject {
 
 class HomeScreenView: UIView {
     weak var delegate: HomeScreenViewDelegate?
+    
     let dimensions: [BoardDimensions] = [.threeByThree, .fourByFour, .fiveByFive, .sixBySix, .sevenBySeven, .eightByEight, .nineByNine, .tenByTen]
     var selectedSegmentIndex = 0
-    var currentPlayer: Player = .PlayerOne
-    var board: [[Player?]] = []
     
+    private lazy var logoImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "logoClear")
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.accessibilityIdentifier = "HomeScreenView.logoImageView"
+        return imageView
+    }()
     
     private lazy var playerStackView: UIStackView = {
         let stackView = UIStackView()
@@ -135,6 +142,8 @@ class HomeScreenView: UIView {
 // MARK: - Constraints
 extension HomeScreenView {
     private func configureSubviews() {
+        addSubview(logoImageView)
+        
         addSubview(playerStackView)
         playerStackView.addArrangedSubview(titlePlayer)
         playerStackView.addArrangedSubview(playerOneTextField)
@@ -151,6 +160,11 @@ extension HomeScreenView {
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
+            logoImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 50),
+            logoImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 85),
+            logoImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -85),
+            logoImageView.heightAnchor.constraint(equalToConstant: 95),
+            
             playerStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             playerStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
             playerStackView.bottomAnchor.constraint(equalTo: boardStackView.topAnchor, constant: -60),
@@ -162,7 +176,7 @@ extension HomeScreenView {
             buttonStackView.topAnchor.constraint(equalTo: boardStackView.bottomAnchor, constant: 85),
             buttonStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             buttonStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
-            buttonStackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -24),
+            buttonStackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
         ])
     }
 }
