@@ -156,6 +156,14 @@
 			path = BoardViews;
 			sourceTree = "<group>";
 		};
+		A4B6D50C2AED457300869E61 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				A4B6D5042AEC4A4F00869E61 /* Game.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
 		A4CC80172AEA9B0400BD6F6E /* Historic */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,13 +249,13 @@
 		A4FA52E52AEA8E61000E09D0 /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				A4190FA12AEB288700416ABE /* BoardViews */,
 				A4190F9E2AEB1D9C00416ABE /* Models */,
 				A4FA52EC2AEA8EDB000E09D0 /* Protocols */,
+				A4B6D50C2AED457300869E61 /* Game */,
+				A4190FA12AEB288700416ABE /* BoardViews */,
 				A4CC80182AEA9B1A00BD6F6E /* HomeScreen */,
 				A4CC80172AEA9B0400BD6F6E /* Historic */,
 				A4CC801A2AEA9EEB00BD6F6E /* Coordinator */,
-				A4B6D5042AEC4A4F00869E61 /* Game.swift */,
 			);
 			path = Features;
 			sourceTree = "<group>";
