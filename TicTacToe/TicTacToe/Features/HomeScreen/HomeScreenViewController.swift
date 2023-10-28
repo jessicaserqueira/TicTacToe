@@ -31,7 +31,10 @@ class HomeScreenViewController: UIViewController {
 
 // MARK: - Delegates
 extension HomeScreenViewController: HomeScreenViewDelegate {
-    func didTappedStartMatchButton(withBoardSize boardSize: BoardDimensions) {
-        viewModel.didTappedStartMatchButton(withBoardSize: boardSize)
+    func didTappedStartMatchButton(withBoardSize boardSize: BoardDimensions, playerOne: String, playerTwo: String) {
+        viewModel.selectedBoardSize = boardSize
+        viewModel.playerOneName = playerOne
+        viewModel.playerTwoName = playerTwo
+        viewModel.didTappedStartMatchButton()
     }
 }
