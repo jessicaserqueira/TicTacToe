@@ -7,7 +7,14 @@
 
 import UIKit
 
+protocol HistoricViewDelegate: AnyObject {
+    func numberOfRows(in tableView: UITableView, section: Int) -> Int
+    func cellForRowAt(_ tableView: UITableView, indexPath: IndexPath) -> UITableViewCell
+}
+
 class HistoricView: UIView {
+    weak var delegate: HistoricViewDelegate?
+    
     private lazy var historicTitle: UILabel = {
         let label = UILabel()
         label.text = "Histórico"
@@ -18,22 +25,23 @@ class HistoricView: UIView {
         return label
     }()
     
-    private lazy var historicTableView: UITableView = {
+    lazy var historicTableView: UITableView = {
         let tableView = UITableView()
-        tableView.dataSource = self
         tableView.delegate = self
+        tableView.dataSource = self
+        tableView.reloadData()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.accessibilityIdentifier = "HistoricView.historicTitle"
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         return tableView
     }()
+
     
     // MARK: - Initializer
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureSubviews()
         setupConstraints()
-        setupActions()
     }
     
     required init?(coder: NSCoder) {
@@ -55,31 +63,49 @@ extension HistoricView {
             historicTitle.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -36),
             
             historicTableView.topAnchor.constraint(equalTo: historicTitle.bottomAnchor, constant: 16),
-            historicTableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
-            historicTableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
+            historicTableView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            historicTableView.trailingAnchor.constraint(equalTo: trailingAnchor),
             historicTableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -50),
-            
         ])
     }
 }
 
 // MARK: - Actions
 extension HistoricView {
-    private func setupActions(){
+    func updatePlayerNames(playerOne: String, playerTwo: String, date: Date, cell: UITableViewCell) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy. HH:mm"
+        let formattedDate = dateFormatter.string(from: date)
         
+        cell.textLabel?.text = "🏆 \(playerOne) vs \(playerTwo)"
+        cell.textLabel?.font = UIFont.sFProText(ofSize: 17, weight: .bold)
+        cell.detailTextLabel?.text = formattedDate
+        
+        let playerOneColor: UIColor = DesignSystem.Colors.tertiary
+        let playerTwoColor: UIColor = DesignSystem.Colors.accent
+        
+        if let attributedText = cell.textLabel?.text {
+            let attributedString = NSMutableAttributedString(string: attributedText)
+            
+            let rangeOfPlayerOne = (attributedText as NSString).range(of: playerOne)
+            attributedString.addAttributes([.foregroundColor: playerOneColor], range: rangeOfPlayerOne)
+            
+            let rangeOfPlayerTwo = (attributedText as NSString).range(of: playerTwo)
+            attributedString.addAttributes([.foregroundColor: playerTwoColor], range: rangeOfPlayerTwo)
+            
+            cell.textLabel?.attributedText = attributedString
+        }
     }
 }
 
 // MARK: - DataSource
 extension HistoricView:  UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return delegate?.numberOfRows(in: tableView, section: section) ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = "test"
-        return cell
+        return delegate?.cellForRowAt(tableView, indexPath: indexPath) ?? UITableViewCell()
     }
 }
 

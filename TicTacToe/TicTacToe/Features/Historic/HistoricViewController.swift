@@ -28,6 +28,23 @@ class HistoricViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view = customView
+        customView.delegate = self
         view.backgroundColor = DesignSystem.Colors.background
+        
     }
+}
+
+//MARK: - Delegate
+extension HistoricViewController: HistoricViewDelegate {
+    func numberOfRows(in tableView: UITableView, section: Int) -> Int {
+        return viewModel.gameMatches.count
+    }
+    
+    func cellForRowAt(_ tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let gameMatch = viewModel.gameMatches[indexPath.row]
+        customView.updatePlayerNames(playerOne: gameMatch.playerOne, playerTwo: gameMatch.playerTwo, date: gameMatch.date, cell: cell)
+        return cell
+    }
+
 }

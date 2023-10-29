@@ -9,12 +9,13 @@ import UIKit
 
 protocol HomeScreenViewDelegate: AnyObject {
     func didTappedStartMatchButton(withBoardSize boardSize: BoardDimensions, playerOne: String, playerTwo: String)
-    func didTappedHistoryButton()
+    func didTappedHistoryButton(playerOne: String, playerTwo: String)
 }
 
 class HomeScreenView: UIView {
     weak var delegate: HomeScreenViewDelegate?
-    
+    private var playerOneName: String?
+    private var playerTwoName: String?
     let dimensions: [BoardDimensions] = [.threeByThree, .fourByFour, .fiveByFive, .sixBySix, .sevenBySeven, .eightByEight, .nineByNine, .tenByTen]
     var selectedSegmentIndex = 0
     
@@ -37,14 +38,14 @@ class HomeScreenView: UIView {
     }()
     
     private lazy var titlePlayer: UILabel = {
-        let labal = UILabel()
-        labal.text = "Nome dos jogadores"
-        labal.font = UIFont.sFProText(ofSize: 20, weight: .medium)
-        labal.textColor = .black
-        labal.textAlignment = .center
-        labal.translatesAutoresizingMaskIntoConstraints = false
-        labal.accessibilityIdentifier = "HomeScreenView.titlePlayer"
-        return labal
+        let label = UILabel()
+        label.text = "Nome dos jogadores"
+        label.font = UIFont.sFProText(ofSize: 20, weight: .medium)
+        label.textColor = .black
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.accessibilityIdentifier = "HomeScreenView.titlePlayer"
+        return label
     }()
     
     private lazy var playerOneTextField: CustomTextField = {
@@ -73,14 +74,14 @@ class HomeScreenView: UIView {
     }()
     
     private lazy var titleBoard: UILabel = {
-        let labal = UILabel()
-        labal.text = "Tamanho do tabuleiro"
-        labal.textAlignment = .center
-        labal.font = UIFont.sFProText(ofSize: 20, weight: .medium)
-        labal.textColor = .black
-        labal.translatesAutoresizingMaskIntoConstraints = false
-        labal.accessibilityIdentifier = "HomeScreenView.titleBoard"
-        return labal
+        let label = UILabel()
+        label.text = "Tamanho do tabuleiro"
+        label.textAlignment = .center
+        label.font = UIFont.sFProText(ofSize: 20, weight: .medium)
+        label.textColor = .black
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.accessibilityIdentifier = "HomeScreenView.titleBoard"
+        return label
     }()
     
     private lazy var segmentedButton: CustomUISegmentedControl = {
@@ -184,20 +185,22 @@ extension HomeScreenView {
 
 // MARK: - Actions
 extension HomeScreenView {
+
+    
     func setupActions() {
         startMatchButton.addTarget(self, action: #selector(didTappedStartMatchButton), for: .touchUpInside)
         matchHistoryButton.addTarget(self, action: #selector(didTappedHistoryButton), for: .touchUpInside)
     }
     
     @objc func didTappedStartMatchButton() {
-        let playerOne = playerOneTextField.text ?? ""
-        let playerTwo = playerTwoTextField.text ?? ""
+        playerOneName = playerOneTextField.text
+        playerTwoName = playerTwoTextField.text
         let dimension = dimensions[selectedSegmentIndex]
-        delegate?.didTappedStartMatchButton(withBoardSize: dimension, playerOne: playerOne, playerTwo: playerTwo)
+        delegate?.didTappedStartMatchButton(withBoardSize: dimension, playerOne: playerOneName ?? "", playerTwo: playerTwoName ?? "")
     }
     
     @objc func didTappedHistoryButton() {
-        delegate?.didTappedHistoryButton()
+        delegate?.didTappedHistoryButton(playerOne: playerOneName ?? "", playerTwo: playerTwoName ?? "")
     }
 }
 
