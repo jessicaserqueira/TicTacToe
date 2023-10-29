@@ -20,6 +20,9 @@ class CustomTextField: UITextField {
         self.placeholder = placeholder
         self.accessibilityIdentifier = accessibilityIdentifier
         self.translatesAutoresizingMaskIntoConstraints = false
+        self.autocorrectionType = .no
+        self.delegate = self
+        
         setupConstraints()
         createPlaceholder()
     }
@@ -55,3 +58,14 @@ extension CustomTextField {
     }
 }
 
+// MARK: - UITextFieldDelegate
+extension CustomTextField: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if type == "Jogador 1" || type == "Jogador 2" {
+            if string.contains(" ") {
+                return false
+            }
+        }
+        return true
+    }
+}

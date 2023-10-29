@@ -37,7 +37,7 @@ class BoarView: UIView {
         return label
     }()
     
-    lazy var namePlayerTitle: UILabel = {
+    private lazy var namePlayerTitle: UILabel = {
         let label = UILabel()
         label.text = ""
         label.textAlignment = .center
@@ -47,7 +47,7 @@ class BoarView: UIView {
         return label
     }()
     
-    private  lazy var ticTacToeBoard: CustomBoardStackView = {
+    private lazy var ticTacToeBoard: CustomBoardStackView = {
         let stackView =  CustomBoardStackView(
             accessibilityIdentifier:"BoarView.ticTacToeBoard"
         )
@@ -88,7 +88,7 @@ class BoarView: UIView {
         )
     }()
     
-// MARK: - Initializer
+    // MARK: - Initializer
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureSubviews()
@@ -136,16 +136,19 @@ extension BoarView {
 // MARK: - Actions
 extension BoarView {
     func setupActions() {
-        resetGameButton.addTarget(self, action: #selector(didTappedResetGameButton), for: .touchUpInside)
-        newGameButton.addTarget(self, action: #selector(didTappedNewGameButton), for: .touchUpInside)
+        resetGameButton.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
+        newGameButton.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
     }
     
-    @objc func didTappedResetGameButton() {
-        delegate?.didTappedResetGameButton()
-    }
-    
-    @objc func didTappedNewGameButton() {
-        delegate?.didTappedNewGameButton()
+    @objc func buttonTapped(_ sender: CustomButton) {
+        switch sender {
+        case resetGameButton:
+            delegate?.didTappedResetGameButton()
+        case newGameButton:
+            delegate?.didTappedNewGameButton()
+        default:
+            break
+        }
     }
     
     func updateBoardSize(with dimension: BoardDimensions) {
@@ -180,33 +183,25 @@ extension BoarView {
         if let rowStack = ticTacToeBoard.arrangedSubviews[row] as? UIStackView,
            let button = rowStack.arrangedSubviews[column] as? CustomPlayerButton {
             button.playerImageView.image = UIImage(named: imageName)
+            button.isUserInteractionEnabled = false
         }
     }
     
     func clearCellImages() {
-        for rowStack in ticTacToeBoard.arrangedSubviews {
-            guard let rowStack = rowStack as? UIStackView else { continue }
-            for case let button as CustomPlayerButton in rowStack.arrangedSubviews {
-                button.playerImageView.image = nil
-            }
+        updateButtonState { button in
+            button.playerImageView.image = nil
         }
     }
     
     func disableButtons() {
-        for rowStack in ticTacToeBoard.arrangedSubviews {
-            guard let rowStack = rowStack as? UIStackView else { continue }
-            for case let button as CustomPlayerButton in rowStack.arrangedSubviews {
-                button.isUserInteractionEnabled = false
-            }
+        updateButtonState { button in
+            button.isUserInteractionEnabled = false
         }
     }
     
     func enableButtons() {
-        for rowStack in ticTacToeBoard.arrangedSubviews {
-            guard let rowStack = rowStack as? UIStackView else { continue }
-            for case let button as CustomPlayerButton in rowStack.arrangedSubviews {
-                button.isUserInteractionEnabled = true
-            }
+        updateButtonState { button in
+            button.isUserInteractionEnabled = true
         }
     }
     
@@ -216,6 +211,16 @@ extension BoarView {
     
     func updatePlayerLabelToPlayer() {
         boardTitle.text = "Jogador da vez"
+    }
+    
+    private func updateButtonState(buttonAction: (CustomPlayerButton) -> Void) {
+        for rowStack in ticTacToeBoard.arrangedSubviews {
+            guard let rowStack = rowStack as? UIStackView else { continue }
+            for case let button as CustomPlayerButton in rowStack.arrangedSubviews {
+                buttonAction(button)
+                
+            }
+        }
     }
 }
 

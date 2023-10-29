@@ -80,6 +80,7 @@ extension HistoricView {
         cell.textLabel?.text = "🏆 \(playerOne) vs \(playerTwo)"
         cell.textLabel?.font = UIFont.sFProText(ofSize: 17, weight: .bold)
         cell.detailTextLabel?.text = formattedDate
+        cell.detailTextLabel?.textColor = .black
         
         let playerOneColor: UIColor = DesignSystem.Colors.tertiary
         let playerTwoColor: UIColor = DesignSystem.Colors.accent

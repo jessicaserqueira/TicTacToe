@@ -60,10 +60,6 @@ extension BoardViewController: BoardViewModelDelegate {
         present(alert, animated: true, completion: nil)
     }
     
-    func switchPlayerLabel(player: String) {
-        customView.namePlayerTitle.text = player
-    }
-    
     func setButtonImages(forPlayer: Int, at row: Int, column: Int) {
         customView.setButtonImages(forPlayer: forPlayer, at: row, column: column)
     }

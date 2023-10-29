@@ -27,9 +27,6 @@ class CustomTableViewCell: UITableViewCell {
         
         contentView.addSubview(playerNameLabel)
         contentView.addSubview(dateLabel)
-        
-        // Define as constraints das suas subviews playerNameLabel e dateLabel.
-        // Certifique-se de que elas estão corretamente posicionadas na célula.
     }
     
     required init?(coder aDecoder: NSCoder) {
