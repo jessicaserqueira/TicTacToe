@@ -39,9 +39,12 @@ class BoardViewModel {
         delegate?.setButtonImages(forPlayer: game.currentPlayer, at: row, column: column)
     }
     
-    private func handleWin() {
+    private func handleWin(player: Player) {
         gameEnded = true
-        let gameMatch = GameMatch(playerOne: playerOneName ?? "", playerTwo: playerTwoName ?? "", date: Date())
+        let playerOne = PlayerEntity(winner: player == .playerOne, player: playerOneName ?? "")
+        let playerTwo = PlayerEntity(winner: player == .playerTwo, player: playerTwoName ?? "")
+        let gameMatch = GameMatch(playerOne: playerOne,
+                                  playerTwo: playerTwo)
         gameHistory.append(gameMatch)
         HistoricManager.shared.addGameMatch(gameMatch)
         HistoricManager.shared.saveGameMatches()
@@ -60,8 +63,8 @@ class BoardViewModel {
     }
     
     private func checkGameState(row: Int, column: Int) {
-        if game.checkForWin() != nil {
-            handleWin()
+        if let player = game.checkForWin() {
+            handleWin(player: player)
         } else if game.isGameOver() {
             handleDraw()
             delegate?.disableButtons()

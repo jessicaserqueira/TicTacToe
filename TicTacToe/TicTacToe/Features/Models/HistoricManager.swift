@@ -17,7 +17,6 @@ class HistoricManager {
     
     func addGameMatch(_ gameMatch: GameMatch) {
         gameMatches.append(gameMatch)
-
     }
     
     func saveGameMatches() {

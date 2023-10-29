@@ -60,8 +60,12 @@ extension HistoricViewController: HistoricViewDelegate {
         }
         
         cell.selectionStyle = .none
-        let gameMatch = viewModel.gameMatches[indexPath.row]
-        customView.updatePlayerNames(playerOne: gameMatch.playerOne, playerTwo: gameMatch.playerTwo, date: gameMatch.date, cell: cell)
+        let gameMatches = viewModel.gameMatches.sorted { $0.date > $1.date }
+        let gameMatch = gameMatches[indexPath.row]
+        customView.updatePlayerNames(playerOne: gameMatch.playerOne,
+                                     playerTwo: gameMatch.playerTwo,
+                                     date: gameMatch.date,
+                                     cell: cell)
         return cell
     }
 }

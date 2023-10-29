@@ -70,12 +70,16 @@ extension HistoricView {
 
 // MARK: - Actions
 extension HistoricView {
-    func updatePlayerNames(playerOne: String, playerTwo: String, date: Date, cell: CustomTableViewCell) {
+    func updatePlayerNames(playerOne: PlayerEntity, playerTwo: PlayerEntity, date: Date, cell: CustomTableViewCell) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy. HH:mm"
         let formattedDate = dateFormatter.string(from: date)
         
-        cell.playerNameLabel.text = "🏆 \(playerOne) vs \(playerTwo)"
+        if playerOne.winner {
+            cell.playerNameLabel.text = "🏆 \(playerOne.player) vs \(playerTwo.player)"
+        } else {
+            cell.playerNameLabel.text = "\(playerOne.player) vs \(playerTwo.player) 🏆"
+        }
         cell.dateLabel.text = formattedDate
         
         let playerOneColor: UIColor = DesignSystem.Colors.tertiary
@@ -84,10 +88,10 @@ extension HistoricView {
         if let attributedText = cell.playerNameLabel.text {
             let attributedString = NSMutableAttributedString(string: attributedText)
             
-            let rangeOfPlayerOne = (attributedText as NSString).range(of: playerOne)
+            let rangeOfPlayerOne = (attributedText as NSString).range(of: playerOne.player)
             attributedString.addAttributes([.foregroundColor: playerOneColor], range: rangeOfPlayerOne)
             
-            let rangeOfPlayerTwo = (attributedText as NSString).range(of: playerTwo)
+            let rangeOfPlayerTwo = (attributedText as NSString).range(of: playerTwo.player)
             attributedString.addAttributes([.foregroundColor: playerTwoColor], range: rangeOfPlayerTwo)
             
             cell.playerNameLabel.attributedText = attributedString

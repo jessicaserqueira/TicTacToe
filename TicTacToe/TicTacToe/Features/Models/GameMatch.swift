@@ -8,20 +8,20 @@
 import Foundation
 
 struct GameMatch: Codable {
-    let playerOne: String
-    let playerTwo: String
-    let date: Date
-
-    init(playerOne: String, playerTwo: String, date: Date) {
+    internal init(playerOne: PlayerEntity, playerTwo: PlayerEntity, date: Date = Date()) {
         self.playerOne = playerOne
         self.playerTwo = playerTwo
         self.date = date
     }
+    
+    let playerOne: PlayerEntity
+    let playerTwo: PlayerEntity
+    let date: Date
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        playerOne = try container.decode(String.self, forKey: .playerOne)
-        playerTwo = try container.decode(String.self, forKey: .playerTwo)
+        playerOne = try container.decode(PlayerEntity.self, forKey: .playerOne)
+        playerTwo = try container.decode(PlayerEntity.self, forKey: .playerTwo)
         date = try container.decode(Date.self, forKey: .date)
     }
 

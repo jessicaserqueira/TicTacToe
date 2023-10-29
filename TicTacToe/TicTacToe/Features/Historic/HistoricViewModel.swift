@@ -23,7 +23,10 @@ class HistoricViewModel {
     }
     
     func addGameMatch() {
-        let gameMatch = GameMatch(playerOne: playerOneName ?? "", playerTwo: playerTwoName ?? "", date: Date())
+        let playerOne = PlayerEntity(player: playerOneName ?? "")
+        let playerTwo = PlayerEntity(player: playerTwoName ?? "")
+        let gameMatch = GameMatch(playerOne: playerOne,
+                                  playerTwo: playerTwo)
         gameMatches.append(gameMatch)
         HistoricManager.shared.saveGameMatches()
         HistoricManager.shared.addGameMatch(gameMatch)
