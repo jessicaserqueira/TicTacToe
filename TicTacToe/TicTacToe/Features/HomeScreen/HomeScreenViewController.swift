@@ -41,4 +41,8 @@ extension HomeScreenViewController: HomeScreenViewDelegate {
         viewModel.playerTwoName = playerTwo
         viewModel.didTappedStartMatchButton()
     }
+    
+    func didTappedHistoryButton() {
+        viewModel.showHistoricView()
+    }
 }

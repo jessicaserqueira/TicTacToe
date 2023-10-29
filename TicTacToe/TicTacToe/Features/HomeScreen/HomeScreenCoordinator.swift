@@ -27,4 +27,9 @@ extension HomeScreenCoordinator: HomeScreenCoordinating {
         let coordinator = BoardCoordinator(navigationController: navigationController, boardSize: game.boardSize, playerOneName: game.playerOneName, playerTwoName: game.playerTwoName)
         coordinator.start()
     }
+    
+    func showHisctoricView() {
+        let coordinator = HistoricCoordinator(navigationController: navigationController)
+        coordinator.start()
+    }
 }

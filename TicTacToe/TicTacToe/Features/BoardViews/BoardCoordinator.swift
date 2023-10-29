@@ -6,6 +6,7 @@
 //
 
 import UIKit
+
 class BoardCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
