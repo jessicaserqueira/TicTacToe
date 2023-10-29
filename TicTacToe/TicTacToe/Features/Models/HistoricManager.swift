@@ -17,7 +17,6 @@ class HistoricManager {
     
     func addGameMatch(_ gameMatch: GameMatch) {
         gameMatches.append(gameMatch)
-
     }
     
     func saveGameMatches() {
@@ -28,11 +27,10 @@ class HistoricManager {
     }
 
     func loadGameMatches() {
-        if let gameMatchData = UserDefaults.standard.data(forKey: "gameMatches") {
-            let decoder = JSONDecoder()
-            if let gameMatches = try? decoder.decode([GameMatch].self, from: gameMatchData) {
-                self.gameMatches = gameMatches
-            }
+        guard let gameMatchData = UserDefaults.standard.data(forKey: "gameMatches"),
+              let gameMatches = try? JSONDecoder().decode([GameMatch].self, from: gameMatchData) else {
+            return
         }
+        self.gameMatches = gameMatches
     }
 }

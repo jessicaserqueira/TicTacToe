@@ -32,7 +32,7 @@ class CustomButton: UIButton {
                 self.backgroundColor = backgroundColor
             }
         }
-        setupConstraints()   
+        setupConstraints()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -46,5 +46,9 @@ extension CustomButton {
         NSLayoutConstraint.activate([
             heightAnchor.constraint(equalToConstant: 50)
         ])
+    }
+    
+    private func setBackground(backGroudColor: UIColor?, opacity: CGFloat?) {
+        
     }
 }

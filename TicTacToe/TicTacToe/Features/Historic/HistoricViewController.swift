@@ -23,6 +23,21 @@ class HistoricViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
+        setupNavigationBar()
+    }
+
+    func setupNavigationBar() {
+        let backButton = UIBarButtonItem(
+            title: "Voltar",
+            style: .plain,
+            target: self,
+            action:  #selector(backButtonTapped)
+        )
+        navigationItem.leftBarButtonItem = backButton
+    }
+    
+    @objc func backButtonTapped() {
+        navigationController?.popViewController(animated: true)
     }
     
     override func viewDidLoad() {
@@ -30,7 +45,6 @@ class HistoricViewController: UIViewController {
         view = customView
         customView.delegate = self
         view.backgroundColor = DesignSystem.Colors.background
-        
     }
 }
 
@@ -41,10 +55,17 @@ extension HistoricViewController: HistoricViewDelegate {
     }
     
     func cellForRowAt(_ tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let gameMatch = viewModel.gameMatches[indexPath.row]
-        customView.updatePlayerNames(playerOne: gameMatch.playerOne, playerTwo: gameMatch.playerTwo, date: gameMatch.date, cell: cell)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? CustomTableViewCell else {
+            return UITableViewCell()
+        }
+        
+        cell.selectionStyle = .none
+        let gameMatches = viewModel.gameMatches.sorted { $0.date > $1.date }
+        let gameMatch = gameMatches[indexPath.row]
+        customView.updatePlayerNames(playerOne: gameMatch.playerOne,
+                                     playerTwo: gameMatch.playerTwo,
+                                     date: gameMatch.date,
+                                     cell: cell)
         return cell
     }
-
 }

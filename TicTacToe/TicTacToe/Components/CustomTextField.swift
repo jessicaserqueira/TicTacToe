@@ -8,6 +8,16 @@
 import UIKit
 
 class CustomTextField: UITextField {
+    
+    private enum Metrics {
+        static let borderLineOpacity: Float = 0.6
+    }
+    
+    private enum Constants {
+        static let playerOne = "Jogador 1"
+        static let playerTwo = "Jogador 2"
+    }
+    
     var type: String
 
     init(
@@ -20,6 +30,9 @@ class CustomTextField: UITextField {
         self.placeholder = placeholder
         self.accessibilityIdentifier = accessibilityIdentifier
         self.translatesAutoresizingMaskIntoConstraints = false
+        self.autocorrectionType = .no
+        self.delegate = self
+        
         setupConstraints()
         createPlaceholder()
     }
@@ -38,11 +51,11 @@ extension CustomTextField {
     }
     
     private func createPlaceholder() {
-        if type == "Jogador 1" || type == "Jogador 2" {
+        if type == Constants.playerOne || type == Constants.playerTwo {
             let borderLine = UIView()
             borderLine.translatesAutoresizingMaskIntoConstraints = false
             borderLine.backgroundColor = .gray
-            borderLine.layer.opacity = 0.6
+            borderLine.layer.opacity = Metrics.borderLineOpacity
             addSubview(borderLine)
 
             NSLayoutConstraint.activate([
@@ -55,3 +68,14 @@ extension CustomTextField {
     }
 }
 
+// MARK: - UITextFieldDelegate
+extension CustomTextField: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if type == Constants.playerOne || type == Constants.playerTwo {
+            if string.contains(" ") {
+                return false
+            }
+        }
+        return true
+    }
+}

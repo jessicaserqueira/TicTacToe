@@ -8,7 +8,7 @@
 import UIKit
 
 protocol BoardViewDelegate: AnyObject {
-    func didSelectField(playerOne: String, playerTwo: String, at row: Int, column: Int)
+    func didSelectField(at row: Int, column: Int)
     func didTappedResetGameButton()
     func didTappedNewGameButton()
 }
@@ -37,7 +37,7 @@ class BoarView: UIView {
         return label
     }()
     
-    lazy var namePlayerTitle: UILabel = {
+    private lazy var namePlayerTitle: UILabel = {
         let label = UILabel()
         label.text = ""
         label.textAlignment = .center
@@ -47,7 +47,7 @@ class BoarView: UIView {
         return label
     }()
     
-    private  lazy var ticTacToeBoard: CustomBoardStackView = {
+    private lazy var ticTacToeBoard: CustomBoardStackView = {
         let stackView =  CustomBoardStackView(
             accessibilityIdentifier:"BoarView.ticTacToeBoard"
         )
@@ -88,7 +88,7 @@ class BoarView: UIView {
         )
     }()
     
-// MARK: - Initializer
+    // MARK: - Initializer
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureSubviews()
@@ -136,20 +136,29 @@ extension BoarView {
 // MARK: - Actions
 extension BoarView {
     func setupActions() {
-        resetGameButton.addTarget(self, action: #selector(didTappedResetGameButton), for: .touchUpInside)
-        newGameButton.addTarget(self, action: #selector(didTappedNewGameButton), for: .touchUpInside)
+        resetGameButton.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
+        newGameButton.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
     }
     
-    @objc func didTappedResetGameButton() {
-        delegate?.didTappedResetGameButton()
-    }
-    
-    @objc func didTappedNewGameButton() {
-        delegate?.didTappedNewGameButton()
+    @objc func buttonTapped(_ sender: CustomButton) {
+        switch sender {
+        case resetGameButton:
+            delegate?.didTappedResetGameButton()
+        case newGameButton:
+            delegate?.didTappedNewGameButton()
+        default:
+            break
+        }
     }
     
     func updateBoardSize(with dimension: BoardDimensions) {
         ticTacToeBoard.dimension = dimension.width
+    }
+    
+    func setInitialPlayerName(_ name: String?) {
+        guard let name else { return }
+        namePlayerTitle.text = name
+        namePlayerTitle.textColor = DesignSystem.Colors.tertiary
     }
     
     func updatePlayerNames(playerOne: String, playerTwo: String, at row: Int, column: Int) {
@@ -159,19 +168,17 @@ extension BoarView {
         if namePlayerTitle.text == playerOne {
             selectedPlayer = playerTwo
             textColor = DesignSystem.Colors.accent
-            setButtonImages(forPlayer: 2, at: row, column: column)
         } else {
             selectedPlayer = playerOne
             textColor = DesignSystem.Colors.tertiary
-            setButtonImages(forPlayer: 1, at: row, column: column)
         }
         namePlayerTitle.text = selectedPlayer
         namePlayerTitle.textColor = textColor
     }
     
-    func setButtonImages(forPlayer player: Int, at row: Int, column: Int) {
+    func setButtonImages(forPlayer player: Player, at row: Int, column: Int) {
         let imageName: String
-        if player == 1 {
+        if player == .playerOne {
             imageName = "player1_image"
         } else {
             imageName = "player2_image"
@@ -180,33 +187,25 @@ extension BoarView {
         if let rowStack = ticTacToeBoard.arrangedSubviews[row] as? UIStackView,
            let button = rowStack.arrangedSubviews[column] as? CustomPlayerButton {
             button.playerImageView.image = UIImage(named: imageName)
+            button.isUserInteractionEnabled = false
         }
     }
     
     func clearCellImages() {
-        for rowStack in ticTacToeBoard.arrangedSubviews {
-            guard let rowStack = rowStack as? UIStackView else { continue }
-            for case let button as CustomPlayerButton in rowStack.arrangedSubviews {
-                button.playerImageView.image = nil
-            }
+        updateButtonState { button in
+            button.playerImageView.image = nil
         }
     }
     
     func disableButtons() {
-        for rowStack in ticTacToeBoard.arrangedSubviews {
-            guard let rowStack = rowStack as? UIStackView else { continue }
-            for case let button as CustomPlayerButton in rowStack.arrangedSubviews {
-                button.isUserInteractionEnabled = false
-            }
+        updateButtonState { button in
+            button.isUserInteractionEnabled = false
         }
     }
     
     func enableButtons() {
-        for rowStack in ticTacToeBoard.arrangedSubviews {
-            guard let rowStack = rowStack as? UIStackView else { continue }
-            for case let button as CustomPlayerButton in rowStack.arrangedSubviews {
-                button.isUserInteractionEnabled = true
-            }
+        updateButtonState { button in
+            button.isUserInteractionEnabled = true
         }
     }
     
@@ -217,13 +216,21 @@ extension BoarView {
     func updatePlayerLabelToPlayer() {
         boardTitle.text = "Jogador da vez"
     }
+    
+    private func updateButtonState(buttonAction: (CustomPlayerButton) -> Void) {
+        for rowStack in ticTacToeBoard.arrangedSubviews {
+            guard let rowStack = rowStack as? UIStackView else { continue }
+            for case let button as CustomPlayerButton in rowStack.arrangedSubviews {
+                buttonAction(button)
+                
+            }
+        }
+    }
 }
 
 // MARK: - Delegate
 extension BoarView: CustomBoardStackViewDelegate {
     func buttonPressed(at row: Int, column: Int) {
-        if let playerOne = namePlayerTitle.text, let playerTwo = namePlayerTitle.text {
-            delegate?.didSelectField(playerOne: playerOne, playerTwo: playerTwo, at: row, column: column)
-        }
+        delegate?.didSelectField(at: row, column: column)
     }
 }

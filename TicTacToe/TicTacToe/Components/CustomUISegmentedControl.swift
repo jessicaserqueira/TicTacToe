@@ -14,7 +14,7 @@ protocol CustomSegmentedControlDelegate: AnyObject {
 class CustomUISegmentedControl: UISegmentedControl {
     weak var delegate: CustomSegmentedControlDelegate?
     
-    // MARK: - Initializer
+// MARK: - Initializer
     init(
         segmentTitles: [String],
         selectedSegmentIndex: Int,

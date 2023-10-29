@@ -13,17 +13,21 @@ class Game {
     var playerTwoName: String
     var currentPlayer: Player
     var board: [[Player?]]
+    var hasWinner = false
+    var winner: Player?
     
     init(boardSize: BoardDimensions, playerOneName: String, playerTwoName: String) {
         self.boardSize = boardSize
         self.playerOneName = playerOneName
         self.playerTwoName = playerTwoName
-        self.currentPlayer = .PlayerOne
+        self.currentPlayer = .playerOne
         self.board = Array(repeating: Array(repeating: nil, count: boardSize.width), count: boardSize.height)
     }
     
     func reset() {
-        currentPlayer = .PlayerOne
+        currentPlayer = winner ?? .playerOne
+        hasWinner = false
+        winner = nil
         board = Array(repeating: Array(repeating: nil, count: boardSize.width), count: boardSize.height)
     }
     
@@ -38,31 +42,35 @@ class Game {
     }
     
     func switchPlayer() {
-        currentPlayer = (currentPlayer == .PlayerOne) ? .PlayerTwo : .PlayerOne
+        currentPlayer = (currentPlayer == .playerOne) ? .playerTwo : .playerOne
     }
     
     func currentPlayerName() -> String {
-        return (currentPlayer == .PlayerOne) ? playerOneName : playerTwoName
+        return (currentPlayer == .playerOne) ? playerOneName : playerTwoName
     }
     
     func checkForWin() -> Player? {
         for row in 0..<board.count {
             if let player = checkLine(board[row]) {
+                setWinner(player)
                 return player
             }
         }
         
         for col in 0..<board[0].count {
             if let player = checkColumn(board, at: col) {
+                setWinner(player)
                 return player
             }
         }
         
         if let player = checkDiagonalOne(board) {
+            setWinner(player)
             return player
         }
         
         if let player = checkDiagonalTwo(board) {
+            setWinner(player)
             return player
         }
         
@@ -101,5 +109,11 @@ class Game {
     
     private func boardIsFull() -> Bool {
         return board.allSatisfy { row in row.allSatisfy { $0 != nil } }
+    }
+    
+    private func setWinner(_ player: Player) {
+        currentPlayer = player
+        hasWinner = true
+        winner = player
     }
 }
