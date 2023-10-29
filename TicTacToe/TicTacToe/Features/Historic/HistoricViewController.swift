@@ -23,6 +23,21 @@ class HistoricViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
+        setupNavigationBar()
+    }
+
+    func setupNavigationBar() {
+        let backButton = UIBarButtonItem(
+            title: "Voltar",
+            style: .plain,
+            target: self,
+            action:  #selector(backButtonTapped)
+        )
+        navigationItem.leftBarButtonItem = backButton
+    }
+    
+    @objc func backButtonTapped() {
+        navigationController?.popViewController(animated: true)
     }
     
     override func viewDidLoad() {
