@@ -42,10 +42,12 @@ class BoardViewModel {
 
             if let winner = game.checkForWin() {
                 gameEnded = true
-                let playerOneName = Player.PlayerOne
-                let playerTwoName = Player.PlayerTwo
-                let gameMatch = GameMatch(players: [playerOneName, playerTwoName], date: Date())
+                let gameMatch = GameMatch(playerOne: playerOneName ?? "", playerTwo: playerTwoName ?? "", date: Date())
                 gameHistory.append(gameMatch)
+
+                HistoricManager.shared.addGameMatch(gameMatch)
+                HistoricManager.shared.saveGameMatches()
+                
                 delegate?.disableButtons()
                 delegate?.updatePlayerLabelToWinner()
             } else if game.isGameOver() {
@@ -61,7 +63,6 @@ class BoardViewModel {
     }
 
 
-    
     func resetGame() {
         game.resetGame()
         delegate?.clearCellImages()

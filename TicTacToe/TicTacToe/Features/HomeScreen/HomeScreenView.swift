@@ -9,12 +9,13 @@ import UIKit
 
 protocol HomeScreenViewDelegate: AnyObject {
     func didTappedStartMatchButton(withBoardSize boardSize: BoardDimensions, playerOne: String, playerTwo: String)
-    func didTappedHistoryButton()
+    func didTappedHistoryButton(playerOne: String, playerTwo: String)
 }
 
 class HomeScreenView: UIView {
     weak var delegate: HomeScreenViewDelegate?
-    
+    private var playerOneName: String?
+    private var playerTwoName: String?
     let dimensions: [BoardDimensions] = [.threeByThree, .fourByFour, .fiveByFive, .sixBySix, .sevenBySeven, .eightByEight, .nineByNine, .tenByTen]
     var selectedSegmentIndex = 0
     
@@ -184,20 +185,22 @@ extension HomeScreenView {
 
 // MARK: - Actions
 extension HomeScreenView {
+
+    
     func setupActions() {
         startMatchButton.addTarget(self, action: #selector(didTappedStartMatchButton), for: .touchUpInside)
         matchHistoryButton.addTarget(self, action: #selector(didTappedHistoryButton), for: .touchUpInside)
     }
     
     @objc func didTappedStartMatchButton() {
-        let playerOne = playerOneTextField.text ?? ""
-        let playerTwo = playerTwoTextField.text ?? ""
+        playerOneName = playerOneTextField.text
+        playerTwoName = playerTwoTextField.text
         let dimension = dimensions[selectedSegmentIndex]
-        delegate?.didTappedStartMatchButton(withBoardSize: dimension, playerOne: playerOne, playerTwo: playerTwo)
+        delegate?.didTappedStartMatchButton(withBoardSize: dimension, playerOne: playerOneName ?? "", playerTwo: playerTwoName ?? "")
     }
     
     @objc func didTappedHistoryButton() {
-        delegate?.didTappedHistoryButton()
+        delegate?.didTappedHistoryButton(playerOne: playerOneName ?? "", playerTwo: playerTwoName ?? "")
     }
 }
 

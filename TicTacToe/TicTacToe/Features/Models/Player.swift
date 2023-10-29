@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Player {
+enum Player: Codable {
     case PlayerOne
     case PlayerTwo
 }

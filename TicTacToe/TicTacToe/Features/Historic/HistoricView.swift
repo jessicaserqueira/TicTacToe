@@ -18,9 +18,8 @@ class HistoricView: UIView {
         return label
     }()
     
-    private lazy var historicTableView: UITableView = {
+    lazy var historicTableView: UITableView = {
         let tableView = UITableView()
-        tableView.dataSource = self
         tableView.delegate = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.accessibilityIdentifier = "HistoricView.historicTitle"
@@ -67,19 +66,6 @@ extension HistoricView {
 extension HistoricView {
     private func setupActions(){
         
-    }
-}
-
-// MARK: - DataSource
-extension HistoricView:  UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = "test"
-        return cell
     }
 }
 

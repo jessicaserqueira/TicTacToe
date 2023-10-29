@@ -34,7 +34,7 @@ class HomeScreenViewController: UIViewController {
 }
 
 // MARK: - Delegates
-extension HomeScreenViewController: HomeScreenViewDelegate {
+extension HomeScreenViewController: HomeScreenViewDelegate {    
     func didTappedStartMatchButton(withBoardSize boardSize: BoardDimensions, playerOne: String, playerTwo: String) {
         viewModel.selectedBoardSize = boardSize
         viewModel.playerOneName = playerOne
@@ -42,7 +42,9 @@ extension HomeScreenViewController: HomeScreenViewDelegate {
         viewModel.didTappedStartMatchButton()
     }
     
-    func didTappedHistoryButton() {
+    func didTappedHistoryButton(playerOne: String, playerTwo: String) {
+        viewModel.playerOneName = playerOne
+        viewModel.playerTwoName = playerTwo
         viewModel.showHistoricView()
     }
 }
