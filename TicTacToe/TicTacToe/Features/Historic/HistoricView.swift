@@ -32,7 +32,7 @@ class HistoricView: UIView {
         tableView.reloadData()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.accessibilityIdentifier = "HistoricView.historicTitle"
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "Cell")
         return tableView
     }()
 
@@ -72,20 +72,18 @@ extension HistoricView {
 
 // MARK: - Actions
 extension HistoricView {
-    func updatePlayerNames(playerOne: String, playerTwo: String, date: Date, cell: UITableViewCell) {
+    func updatePlayerNames(playerOne: String, playerTwo: String, date: Date, cell: CustomTableViewCell) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy. HH:mm"
         let formattedDate = dateFormatter.string(from: date)
         
-        cell.textLabel?.text = "🏆 \(playerOne) vs \(playerTwo)"
-        cell.textLabel?.font = UIFont.sFProText(ofSize: 17, weight: .bold)
-        cell.detailTextLabel?.text = formattedDate
-        cell.detailTextLabel?.textColor = .black
+        cell.playerNameLabel.text = "🏆 \(playerOne) vs \(playerTwo)"
+        cell.dateLabel.text = formattedDate
         
         let playerOneColor: UIColor = DesignSystem.Colors.tertiary
         let playerTwoColor: UIColor = DesignSystem.Colors.accent
         
-        if let attributedText = cell.textLabel?.text {
+        if let attributedText = cell.playerNameLabel.text {
             let attributedString = NSMutableAttributedString(string: attributedText)
             
             let rangeOfPlayerOne = (attributedText as NSString).range(of: playerOne)
@@ -94,7 +92,7 @@ extension HistoricView {
             let rangeOfPlayerTwo = (attributedText as NSString).range(of: playerTwo)
             attributedString.addAttributes([.foregroundColor: playerTwoColor], range: rangeOfPlayerTwo)
             
-            cell.textLabel?.attributedText = attributedString
+            cell.playerNameLabel.attributedText = attributedString
         }
     }
 }
@@ -107,6 +105,14 @@ extension HistoricView:  UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return delegate?.cellForRowAt(tableView, indexPath: indexPath) ?? UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        48
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        UITableView.automaticDimension
     }
 }
 

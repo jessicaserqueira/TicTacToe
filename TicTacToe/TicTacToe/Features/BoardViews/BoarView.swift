@@ -8,7 +8,7 @@
 import UIKit
 
 protocol BoardViewDelegate: AnyObject {
-    func didSelectField(playerOne: String, playerTwo: String, at row: Int, column: Int)
+    func didSelectField(at row: Int, column: Int)
     func didTappedResetGameButton()
     func didTappedNewGameButton()
 }
@@ -155,6 +155,12 @@ extension BoarView {
         ticTacToeBoard.dimension = dimension.width
     }
     
+    func setInitialPlayerName(_ name: String?) {
+        guard let name else { return }
+        namePlayerTitle.text = name
+        namePlayerTitle.textColor = DesignSystem.Colors.tertiary
+    }
+    
     func updatePlayerNames(playerOne: String, playerTwo: String, at row: Int, column: Int) {
         let selectedPlayer: String
         let textColor: UIColor
@@ -162,19 +168,19 @@ extension BoarView {
         if namePlayerTitle.text == playerOne {
             selectedPlayer = playerTwo
             textColor = DesignSystem.Colors.accent
-            setButtonImages(forPlayer: 2, at: row, column: column)
+            //setButtonImages(forPlayer: 2, at: row, column: column)
         } else {
             selectedPlayer = playerOne
             textColor = DesignSystem.Colors.tertiary
-            setButtonImages(forPlayer: 1, at: row, column: column)
+            //setButtonImages(forPlayer: 1, at: row, column: column)
         }
         namePlayerTitle.text = selectedPlayer
         namePlayerTitle.textColor = textColor
     }
     
-    func setButtonImages(forPlayer player: Int, at row: Int, column: Int) {
+    func setButtonImages(forPlayer player: Player, at row: Int, column: Int) {
         let imageName: String
-        if player == 1 {
+        if player == .PlayerOne {
             imageName = "player1_image"
         } else {
             imageName = "player2_image"
@@ -227,8 +233,8 @@ extension BoarView {
 // MARK: - Delegate
 extension BoarView: CustomBoardStackViewDelegate {
     func buttonPressed(at row: Int, column: Int) {
-        if let playerOne = namePlayerTitle.text, let playerTwo = namePlayerTitle.text {
-            delegate?.didSelectField(playerOne: playerOne, playerTwo: playerTwo, at: row, column: column)
-        }
+        //if let playerOne = namePlayerTitle.text, let playerTwo = namePlayerTitle.text {
+            delegate?.didSelectField(at: row, column: column)
+        //}
     }
 }

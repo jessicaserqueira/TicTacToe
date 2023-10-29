@@ -30,16 +30,17 @@ class BoardViewController: UIViewController {
         
         if let boardSize = viewModel.boardSize {
             customView.updateBoardSize(with: boardSize)
+            customView.setInitialPlayerName(viewModel.playerOneName)
         }
     }
 }
 
 // MARK: - Delegates
 extension BoardViewController: BoardViewDelegate {
-    func didSelectField(playerOne: String, playerTwo: String, at row: Int, column: Int) {
+    func didSelectField(at row: Int, column: Int) {
         if let playerOneName = viewModel.playerOneName, let playerTwoName = viewModel.playerTwoName {
             viewModel.makeMove(row: row, column: column)
-            customView.updatePlayerNames(playerOne: playerOneName, playerTwo: playerTwoName, at: row, column: column)
+            //customView.updatePlayerNames(playerOne: playerOneName, playerTwo: playerTwoName, at: row, column: column)
         }
     }
     
@@ -54,13 +55,19 @@ extension BoardViewController: BoardViewDelegate {
 
 // MARK: - Delegates
 extension BoardViewController: BoardViewModelDelegate {
+    func updatePlayerNames(at row: Int, column: Int) {
+        if let playerOneName = viewModel.playerOneName, let playerTwoName = viewModel.playerTwoName {
+            customView.updatePlayerNames(playerOne: playerOneName, playerTwo: playerTwoName, at: row, column: column)
+        }
+    }
+    
     func showDrawMessage() {
         let alert = UIAlertController(title: "Empate!", message: "O jogo empatou!", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
     
-    func setButtonImages(forPlayer: Int, at row: Int, column: Int) {
+    func setButtonImages(forPlayer: Player, at row: Int, column: Int) {
         customView.setButtonImages(forPlayer: forPlayer, at: row, column: column)
     }
     

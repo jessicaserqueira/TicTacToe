@@ -8,13 +8,14 @@
 import Foundation
 
 protocol BoardViewModelDelegate: AnyObject {
-    func setButtonImages(forPlayer: Int, at row: Int, column: Int)
+    func setButtonImages(forPlayer: Player, at row: Int, column: Int)
     func showDrawMessage()
     func clearCellImages()
     func disableButtons()
     func enableButtons()
     func updatePlayerLabelToWinner()
     func updatePlayerLabelToPlayer()
+    func updatePlayerNames(at row: Int, column: Int)
 }
 
 class BoardViewModel {
@@ -36,7 +37,7 @@ class BoardViewModel {
     
     private func handleValidMove(row: Int, column: Int) {
         game.makeMove(row: row, column: column)
-        delegate?.setButtonImages(forPlayer: currentPlayer, at: row, column: column)
+        delegate?.setButtonImages(forPlayer: game.currentPlayer, at: row, column: column)
     }
     
     private func handleWin() {
@@ -81,6 +82,10 @@ extension BoardViewModel {
         if game.isValidMove(row: row, column: column) {
             handleValidMove(row: row, column: column)
             checkGameState(row: row, column: column)
+        }
+        
+        if !game.hasWinner {
+            delegate?.updatePlayerNames(at: row, column: column)
         }
     }
     

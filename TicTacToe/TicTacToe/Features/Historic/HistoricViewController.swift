@@ -41,10 +41,13 @@ extension HistoricViewController: HistoricViewDelegate {
     }
     
     func cellForRowAt(_ tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? CustomTableViewCell else {
+            return UITableViewCell()
+        }
+        
+        cell.selectionStyle = .none
         let gameMatch = viewModel.gameMatches[indexPath.row]
         customView.updatePlayerNames(playerOne: gameMatch.playerOne, playerTwo: gameMatch.playerTwo, date: gameMatch.date, cell: cell)
         return cell
     }
-
 }

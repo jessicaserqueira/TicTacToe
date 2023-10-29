@@ -13,6 +13,8 @@ class Game {
     var playerTwoName: String
     var currentPlayer: Player
     var board: [[Player?]]
+    var hasWinner = false
+    var winner: Player?
     
     init(boardSize: BoardDimensions, playerOneName: String, playerTwoName: String) {
         self.boardSize = boardSize
@@ -23,7 +25,9 @@ class Game {
     }
     
     func reset() {
-        currentPlayer = .PlayerOne
+        currentPlayer = winner ?? .PlayerOne
+        hasWinner = false
+        winner = nil
         board = Array(repeating: Array(repeating: nil, count: boardSize.width), count: boardSize.height)
     }
     
@@ -45,24 +49,36 @@ class Game {
         return (currentPlayer == .PlayerOne) ? playerOneName : playerTwoName
     }
     
-    func checkForWin() -> Player? {
+    func checkForWin() -> Player? { // TODO: Colocar em metodos
         for row in 0..<board.count {
             if let player = checkLine(board[row]) {
+                currentPlayer = player
+                hasWinner = true
+                winner = player
                 return player
             }
         }
         
         for col in 0..<board[0].count {
             if let player = checkColumn(board, at: col) {
+                currentPlayer = player
+                hasWinner = true
+                winner = player
                 return player
             }
         }
         
         if let player = checkDiagonalOne(board) {
+            currentPlayer = player
+            hasWinner = true
+            winner = player
             return player
         }
         
         if let player = checkDiagonalTwo(board) {
+            currentPlayer = player
+            hasWinner = true
+            winner = player
             return player
         }
         
