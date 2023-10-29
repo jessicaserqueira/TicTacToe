@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 class HistoricViewModel {
     var coordinator: HistoricCoordinating?
     var gameMatches: [GameMatch] = []

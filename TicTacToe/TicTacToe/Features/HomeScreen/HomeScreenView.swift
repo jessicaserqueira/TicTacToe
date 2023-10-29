@@ -38,14 +38,14 @@ class HomeScreenView: UIView {
     }()
     
     private lazy var titlePlayer: UILabel = {
-        let labal = UILabel()
-        labal.text = "Nome dos jogadores"
-        labal.font = UIFont.sFProText(ofSize: 20, weight: .medium)
-        labal.textColor = .black
-        labal.textAlignment = .center
-        labal.translatesAutoresizingMaskIntoConstraints = false
-        labal.accessibilityIdentifier = "HomeScreenView.titlePlayer"
-        return labal
+        let label = UILabel()
+        label.text = "Nome dos jogadores"
+        label.font = UIFont.sFProText(ofSize: 20, weight: .medium)
+        label.textColor = .black
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.accessibilityIdentifier = "HomeScreenView.titlePlayer"
+        return label
     }()
     
     private lazy var playerOneTextField: CustomTextField = {
@@ -74,14 +74,14 @@ class HomeScreenView: UIView {
     }()
     
     private lazy var titleBoard: UILabel = {
-        let labal = UILabel()
-        labal.text = "Tamanho do tabuleiro"
-        labal.textAlignment = .center
-        labal.font = UIFont.sFProText(ofSize: 20, weight: .medium)
-        labal.textColor = .black
-        labal.translatesAutoresizingMaskIntoConstraints = false
-        labal.accessibilityIdentifier = "HomeScreenView.titleBoard"
-        return labal
+        let label = UILabel()
+        label.text = "Tamanho do tabuleiro"
+        label.textAlignment = .center
+        label.font = UIFont.sFProText(ofSize: 20, weight: .medium)
+        label.textColor = .black
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.accessibilityIdentifier = "HomeScreenView.titleBoard"
+        return label
     }()
     
     private lazy var segmentedButton: CustomUISegmentedControl = {

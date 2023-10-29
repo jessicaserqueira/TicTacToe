@@ -27,24 +27,24 @@ class BoarView: UIView {
     }()
     
     private lazy var boardTitle: UILabel = {
-        let labal = UILabel()
-        labal.text = "Vez do jogador"
-        labal.textColor = .black
-        labal.textAlignment = .center
-        labal.font = UIFont.sFProText(ofSize: 20, weight: .medium)
-        labal.translatesAutoresizingMaskIntoConstraints = false
-        labal.accessibilityIdentifier = "BoarView.boardTitle"
-        return labal
+        let label = UILabel()
+        label.text = "Vez do jogador"
+        label.textColor = .black
+        label.textAlignment = .center
+        label.font = UIFont.sFProText(ofSize: 20, weight: .medium)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.accessibilityIdentifier = "BoarView.boardTitle"
+        return label
     }()
     
     lazy var namePlayerTitle: UILabel = {
-        let labal = UILabel()
-        labal.text = ""
-        labal.textAlignment = .center
-        labal.font = UIFont.sFProText(ofSize: 24, weight: .bold)
-        labal.translatesAutoresizingMaskIntoConstraints = false
-        labal.accessibilityIdentifier = "BoarView.namePlayerTitle"
-        return labal
+        let label = UILabel()
+        label.text = ""
+        label.textAlignment = .center
+        label.font = UIFont.sFProText(ofSize: 24, weight: .bold)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.accessibilityIdentifier = "BoarView.namePlayerTitle"
+        return label
     }()
     
     private  lazy var ticTacToeBoard: CustomBoardStackView = {
