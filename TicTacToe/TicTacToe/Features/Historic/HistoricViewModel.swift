@@ -9,9 +9,9 @@ import Foundation
 
 
 class HistoricViewModel {
-    var coordinator: BoardCoordinating?
+    var coordinator: HistoricCoordinating?
 
-    init(coordinator: BoardCoordinating?) {
+    init(coordinator: HistoricCoordinating?) {
         self.coordinator = coordinator
     }
 }

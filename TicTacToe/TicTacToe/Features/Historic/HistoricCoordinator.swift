@@ -16,7 +16,11 @@ class HistoricCoordinator: Coordinator {
     }
     
     func start() {
-        let viewController = HistoricViewController()
+        let viewModel = HistoricViewModel(coordinator: self)
+        let viewController = HistoricViewController(viewModel: viewModel)
         navigationController.pushViewController(viewController, animated: true)
     }
 }
+
+//MARK: - Delegate
+extension HistoricCoordinator: HistoricCoordinating {}
