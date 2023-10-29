@@ -30,7 +30,6 @@ class HistoricViewController: UIViewController {
         view = customView
         customView.delegate = self
         view.backgroundColor = DesignSystem.Colors.background
-        
     }
 }
 

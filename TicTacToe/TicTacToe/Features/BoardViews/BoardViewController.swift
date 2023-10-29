@@ -38,10 +38,7 @@ class BoardViewController: UIViewController {
 // MARK: - Delegates
 extension BoardViewController: BoardViewDelegate {
     func didSelectField(at row: Int, column: Int) {
-        if let playerOneName = viewModel.playerOneName, let playerTwoName = viewModel.playerTwoName {
-            viewModel.makeMove(row: row, column: column)
-            //customView.updatePlayerNames(playerOne: playerOneName, playerTwo: playerTwoName, at: row, column: column)
-        }
+        viewModel.makeMove(row: row, column: column)
     }
     
     func didTappedResetGameButton() {

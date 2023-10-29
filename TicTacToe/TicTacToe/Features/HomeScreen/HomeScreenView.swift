@@ -185,8 +185,6 @@ extension HomeScreenView {
 
 // MARK: - Actions
 extension HomeScreenView {
-
-    
     func setupActions() {
         startMatchButton.addTarget(self, action: #selector(didTappedStartMatchButton), for: .touchUpInside)
         matchHistoryButton.addTarget(self, action: #selector(didTappedHistoryButton), for: .touchUpInside)

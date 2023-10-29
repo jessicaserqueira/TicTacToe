@@ -25,7 +25,6 @@ class BoardViewModel {
     var playerOneName: String?
     var playerTwoName: String?
     var game: Game
-    var currentPlayer: Int = 1
     var gameEnded: Bool = false
     var gameHistory: [GameMatch] = []
     

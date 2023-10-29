@@ -27,7 +27,6 @@ class HistoricView: UIView {
     
     lazy var historicTableView: UITableView = {
         let tableView = UITableView()
-        tableView.delegate = self
         tableView.dataSource = self
         tableView.reloadData()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -35,9 +34,8 @@ class HistoricView: UIView {
         tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "Cell")
         return tableView
     }()
-
     
-    // MARK: - Initializer
+// MARK: - Initializer
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureSubviews()
@@ -115,6 +113,3 @@ extension HistoricView:  UITableViewDataSource {
         UITableView.automaticDimension
     }
 }
-
-// MARK: - Delegate
-extension HistoricView: UITableViewDelegate {}

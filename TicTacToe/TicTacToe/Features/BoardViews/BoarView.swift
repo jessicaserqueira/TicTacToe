@@ -168,11 +168,9 @@ extension BoarView {
         if namePlayerTitle.text == playerOne {
             selectedPlayer = playerTwo
             textColor = DesignSystem.Colors.accent
-            //setButtonImages(forPlayer: 2, at: row, column: column)
         } else {
             selectedPlayer = playerOne
             textColor = DesignSystem.Colors.tertiary
-            //setButtonImages(forPlayer: 1, at: row, column: column)
         }
         namePlayerTitle.text = selectedPlayer
         namePlayerTitle.textColor = textColor
@@ -180,7 +178,7 @@ extension BoarView {
     
     func setButtonImages(forPlayer player: Player, at row: Int, column: Int) {
         let imageName: String
-        if player == .PlayerOne {
+        if player == .playerOne {
             imageName = "player1_image"
         } else {
             imageName = "player2_image"
@@ -233,8 +231,6 @@ extension BoarView {
 // MARK: - Delegate
 extension BoarView: CustomBoardStackViewDelegate {
     func buttonPressed(at row: Int, column: Int) {
-        //if let playerOne = namePlayerTitle.text, let playerTwo = namePlayerTitle.text {
-            delegate?.didSelectField(at: row, column: column)
-        //}
+        delegate?.didSelectField(at: row, column: column)
     }
 }

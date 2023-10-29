@@ -26,7 +26,6 @@
 		A4190FAD2AEC283100416ABE /* BoardCoordinating.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4190FAC2AEC283100416ABE /* BoardCoordinating.swift */; };
 		A4B6D5032AEC47EF00869E61 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B6D5022AEC47EF00869E61 /* Player.swift */; };
 		A4B6D5052AEC4A4F00869E61 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B6D5042AEC4A4F00869E61 /* Game.swift */; };
-		A4B6D5072AEC5BDD00869E61 /* RandomElementProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B6D5062AEC5BDD00869E61 /* RandomElementProtocol.swift */; };
 		A4B6D50B2AED39DA00869E61 /* CustomPlayerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B6D50A2AED39DA00869E61 /* CustomPlayerButton.swift */; };
 		A4B6D5102AEDC4EA00869E61 /* HistoricCoordinating.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B6D50F2AEDC4EA00869E61 /* HistoricCoordinating.swift */; };
 		A4B6D5122AEDCC6900869E61 /* GameMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B6D5112AEDCC6900869E61 /* GameMatch.swift */; };
@@ -89,7 +88,6 @@
 		A4190FAC2AEC283100416ABE /* BoardCoordinating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCoordinating.swift; sourceTree = "<group>"; };
 		A4B6D5022AEC47EF00869E61 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		A4B6D5042AEC4A4F00869E61 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
-		A4B6D5062AEC5BDD00869E61 /* RandomElementProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomElementProtocol.swift; sourceTree = "<group>"; };
 		A4B6D50A2AED39DA00869E61 /* CustomPlayerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPlayerButton.swift; sourceTree = "<group>"; };
 		A4B6D50F2AEDC4EA00869E61 /* HistoricCoordinating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricCoordinating.swift; sourceTree = "<group>"; };
 		A4B6D5112AEDCC6900869E61 /* GameMatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMatch.swift; sourceTree = "<group>"; };
@@ -335,7 +333,6 @@
 				A4FA52ED2AEA8EFA000E09D0 /* Coordinator.swift */,
 				A4190F942AEAA35D00416ABE /* HomeScreenCoordinating.swift */,
 				A4190FAC2AEC283100416ABE /* BoardCoordinating.swift */,
-				A4B6D5062AEC5BDD00869E61 /* RandomElementProtocol.swift */,
 				A4B6D50F2AEDC4EA00869E61 /* HistoricCoordinating.swift */,
 			);
 			path = Protocols;
@@ -497,7 +494,6 @@
 				A4190FA92AEC268E00416ABE /* BoardViewModel.swift in Sources */,
 				A4190FAB2AEC269E00416ABE /* BoardCoordinator.swift in Sources */,
 				A4CC80162AEA993B00BD6F6E /* UIFont+ext.swift in Sources */,
-				A4B6D5072AEC5BDD00869E61 /* RandomElementProtocol.swift in Sources */,
 				A4190F892AEA9F8600416ABE /* HomeScreenView.swift in Sources */,
 				A4190F912AEA9FDF00416ABE /* HistoricView.swift in Sources */,
 				A4190F8D2AEA9FCC00416ABE /* HistoricViewController.swift in Sources */,
