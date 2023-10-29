@@ -9,6 +9,7 @@ import UIKit
 
 protocol HomeScreenViewDelegate: AnyObject {
     func didTappedStartMatchButton(withBoardSize boardSize: BoardDimensions, playerOne: String, playerTwo: String)
+    func didTappedHistoryButton()
 }
 
 class HomeScreenView: UIView {
@@ -185,6 +186,7 @@ extension HomeScreenView {
 extension HomeScreenView {
     func setupActions() {
         startMatchButton.addTarget(self, action: #selector(didTappedStartMatchButton), for: .touchUpInside)
+        matchHistoryButton.addTarget(self, action: #selector(didTappedHistoryButton), for: .touchUpInside)
     }
     
     @objc func didTappedStartMatchButton() {
@@ -192,6 +194,10 @@ extension HomeScreenView {
         let playerTwo = playerTwoTextField.text ?? ""
         let dimension = dimensions[selectedSegmentIndex]
         delegate?.didTappedStartMatchButton(withBoardSize: dimension, playerOne: playerOne, playerTwo: playerTwo)
+    }
+    
+    @objc func didTappedHistoryButton() {
+        delegate?.didTappedHistoryButton()
     }
 }
 

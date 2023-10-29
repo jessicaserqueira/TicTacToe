@@ -27,7 +27,8 @@ class BoardViewModel {
     var game: Game
     var currentPlayer: Int = 1
     var gameEnded: Bool = false
-    var winnerHistory: [String] = []
+    var gameHistory: [GameMatch] = []
+
     
     init(coordinator: BoardCoordinating, game: Game) {
         self.coordinator = coordinator
@@ -38,11 +39,13 @@ class BoardViewModel {
         if game.isValidMove(row: row, column: column) && !gameEnded {
             game.makeMove(row: row, column: column)
             delegate?.setButtonImages(forPlayer: currentPlayer, at: row, column: column)
-            
-            if game.checkForWin() != nil {
+
+            if let winner = game.checkForWin() {
                 gameEnded = true
-                let winnerName = game.currentPlayerName()
-                winnerHistory.append(winnerName)
+                let playerOneName = Player.PlayerOne
+                let playerTwoName = Player.PlayerTwo
+                let gameMatch = GameMatch(players: [playerOneName, playerTwoName], date: Date())
+                gameHistory.append(gameMatch)
                 delegate?.disableButtons()
                 delegate?.updatePlayerLabelToWinner()
             } else if game.isGameOver() {
@@ -56,6 +59,8 @@ class BoardViewModel {
             }
         }
     }
+
+
     
     func resetGame() {
         game.resetGame()

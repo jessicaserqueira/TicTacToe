@@ -29,4 +29,8 @@ class HomeScreenViewModel {
         let game = Game(boardSize: boardSize, playerOneName: playerOneName, playerTwoName: playerTwoName)
         coordinator?.showBoardScreen(with: game)
     }
+    
+    func showHistoricView() {
+        coordinator?.showHisctoricView()
+    }
 }

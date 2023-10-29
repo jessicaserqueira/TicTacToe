@@ -9,4 +9,5 @@ import UIKit
 
 protocol HomeScreenCoordinating: AnyObject {
     func showBoardScreen(with game: Game)
+    func showHisctoricView()
 }
