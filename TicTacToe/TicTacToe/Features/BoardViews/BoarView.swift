@@ -32,7 +32,6 @@ class BoarView: UIView {
         labal.textColor = .black
         labal.textAlignment = .center
         labal.font = UIFont.sFProText(ofSize: 20, weight: .medium)
-
         labal.translatesAutoresizingMaskIntoConstraints = false
         labal.accessibilityIdentifier = "BoarView.boardTitle"
         return labal

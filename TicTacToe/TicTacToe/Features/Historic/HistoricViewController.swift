@@ -28,23 +28,23 @@ class HistoricViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view = customView
+        customView.delegate = self
         view.backgroundColor = DesignSystem.Colors.background
         
-        customView.historicTableView.dataSource = self
-        customView.historicTableView.reloadData()
     }
 }
 
-// MARK: - DataSource
-extension HistoricViewController:  UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//MARK: - Delegate
+extension HistoricViewController: HistoricViewDelegate {
+    func numberOfRows(in tableView: UITableView, section: Int) -> Int {
         return viewModel.gameMatches.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func cellForRowAt(_ tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let gameMatch = viewModel.gameMatches[indexPath.row]
-        cell.textLabel?.text = "🏆 \(String(describing: gameMatch.playerOne)) vs \(gameMatch.playerTwo)"
+        customView.updatePlayerNames(playerOne: gameMatch.playerOne, playerTwo: gameMatch.playerTwo)
+        
         return cell
     }
 }

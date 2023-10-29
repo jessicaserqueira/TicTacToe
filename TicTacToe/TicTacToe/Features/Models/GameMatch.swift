@@ -7,8 +7,6 @@
 
 import Foundation
 
-import Foundation
-
 struct GameMatch: Codable {
     let playerOne: String
     let playerTwo: String
